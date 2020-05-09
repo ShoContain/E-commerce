@@ -1,0 +1,30 @@
+.product-section{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: $gutter;
+    margin: 60px auto;
+}
+.product-section-image{
+    margin: auto;
+    border: 1px solid #979797;
+    padding: 70px;
+}
+.product-section-subtitle{
+    font-size: 20px;
+    font-weight: bold;
+    color:$text-color-light;
+}
+.product-section-title{
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+.product-section-price{
+    font-size: 40px;
+    font-weight: bold;
+    color: $text-color;
+}
+.product-section-info{
+    p{
+        margin-bottom: 16px;
+    }
+}

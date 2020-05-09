@@ -1,0 +1,21 @@
+.button{
+    border: 1px solid $text-color;
+    padding: 12px 40px;
+    border-radius: 0.375rem;
+    &:hover{
+        color: white;
+        background: #434a5c;
+    }
+}
+.button-white{
+    border: 1px solid $white;
+    color:$white !important;
+    &:hover{
+        color: $text-color !important;
+        background: $white !important;
+    }
+}
+
+.button-container{
+    margin: 40px 0 80px;
+}
