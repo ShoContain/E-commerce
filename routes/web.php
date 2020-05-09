@@ -18,7 +18,7 @@ Route::get('/','LandingPageController@index')->name('landing-page');
 Route::get('/shop','ShopController@index')->name('shop.index');
 Route::get('/shop/{slug}','ShopController@show')->name('shop.show');
 
-Route::view('/cart','cart');
+Route::get ('/cart','CartController@index')->name('cart.index');
 
 Route::view('/product','product');
 Route::view('/checkout','checkout');

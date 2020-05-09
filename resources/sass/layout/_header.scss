@@ -77,6 +77,20 @@ header{
                     color:darken($white,20%)
                 }
             }
+            .cart-count{
+                display: inline-block;
+                background: $cart-count;
+                color: $text-color;
+                border-radius: 50%;
+                font-weight: bold;
+                font-size: 14px;
+                padding: 0 6px;
+                margin: 0 4px;
+                span{
+                    display: inline-block;
+                    padding:40% 0;
+                }
+            }
         }
     }
 }

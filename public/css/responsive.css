@@ -58,6 +58,14 @@
   .might-like-section .might-like-grid {
     grid-template-columns: 1fr 1fr 1fr;
   }
+
+  .cart-section {
+    grid-template-columns: 1fr;
+  }
+
+  .cart-section .have-code-container {
+    width: 100%;
+  }
 }
 
 /* Small Devices, Tablets */
@@ -116,6 +124,23 @@
 
   .might-like-section .might-like-grid {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .cart-section .cart-buttons {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .cart-section .cart-total {
+    flex-direction: column;
+  }
+
+  .cart-section .cart-total .cart-total-left {
+    width: 100%;
+  }
+
+  .cart-section .cart-total .cart-total-right {
+    width: 100%;
   }
 }
 

@@ -1,10 +1,11 @@
 .button{
     border: 1px solid $text-color;
-    padding: 12px 40px;
-    border-radius: 0.375rem;
+    padding: 12px 30px;
+    color: $text-color;
     &:hover{
         color: white;
-        background: #434a5c;
+        background: lighten(#585c65,40);
+        font-weight: bolder;
     }
 }
 .button-white{
@@ -18,4 +19,14 @@
 
 .button-container{
     margin: 40px 0 80px;
+}
+.button-primary{
+    border: 1px solid $white;
+    color: $white;
+    background:lighten(#3acbad,20);
+    padding: 12px 30px;
+    &:hover{
+        background:#3acbad;
+        color: $text-color;
+    }
 }
