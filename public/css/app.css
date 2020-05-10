@@ -208,6 +208,12 @@ h2 {
   border-color: #e9e9e9;
 }
 
+.alert-info {
+  color: #b1b0ae;
+  background: #dede7c;
+  border-color: #e9e9e9;
+}
+
 footer {
   background: #535353;
   color: lightgray;

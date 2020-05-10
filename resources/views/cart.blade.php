@@ -23,6 +23,12 @@
                 </div>
             @endif
 
+            @if(session()->has('info_message'))
+                <div class="alert alert-info">
+                    {{ session()->get('info_message') }}
+                </div>
+            @endif
+
             @if(count($errors)>0)
                 <div class="alert alert-danger">
                     <ul>
@@ -98,9 +104,9 @@
                         <span class="cart-totals-total">合計(税込)</span>
                     </div>
                     <div class="cart-actual-total"> <!--(実際の金額)-->
-                        20,000円 <br>
-                        2000円 <br>
-                        <span class="cart-totals-total">22,000円</span>
+                        {{presentPrice(Cart::getSubTotal())}}<br>
+                         {{ getTax(Cart::getsubTotal()) }}<br>
+                        <span class="cart-totals-total">{{ presentPrice(Cart::getTotal()) }}</span>
                     </div>
                 </div>
 

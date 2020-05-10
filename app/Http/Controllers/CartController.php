@@ -37,8 +37,23 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
+        $item = \Cart::getContent()->filter(function ($value) use ($request){
+           return $request->id === $value->id;
+        });
+        if($item->isNotEmpty()){
+            return redirect()->route('cart.index')->with('info_message','既に同じ商品がカートに入っています');
+        }
+        else{
+            $saleCondition = new \Darryldecode\Cart\CartCondition(array(
+            'name' => 'tax 10%',
+            'type' => 'tax',
+            'value' => '10%',
+            'target'=>'total',
+        ));
+        \Cart::condition($saleCondition);
         \Cart::add($request->id,$request->name,$request->price,1)->associate('App\Product');
         return redirect()->route('cart.index')->with('success_message','カートに入れました');
+        }
     }
 
 
