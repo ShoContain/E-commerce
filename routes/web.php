@@ -22,9 +22,22 @@ Route::get('/shop/{slug}','ShopController@show')->name('shop.show');
 Route::get ('/cart','CartController@index')->name('cart.index');
 Route::post ('/cart','CartController@store')->name('cart.store');
 Route::delete ('/cart/{id}','CartController@destroy')->name('cart.destroy');
+Route::post ('/cart','CartController@store')->name('cart.store');
+Route::post ('/cart/switchToWishList/{id}','CartController@switchToWishList')->name('cart.switchToWishList');
+
+//ウィッシュリスト
+Route::delete ('/wishList/{id}','WishListController@destroy')->name('wishlist.destroy');
+Route::post ('/wishList/switchToCart/{id}','WishListController@switchToCart')
+    ->name('wishlist.switchToCart');
+
+
 //カートを空にする
 Route::get('empty',function(){
-   Cart::clear();
+   \Cart::clear();
+});
+//ウィッシュリストを空にする
+Route::get('empty/wishlist',function(){
+    app('wishList')->clear();
 });
 
 Route::view('/product','product');

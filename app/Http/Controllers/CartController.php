@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use Darryldecode\Cart\Cart;
+use DebugBar\DebugBar;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -101,5 +102,28 @@ class CartController extends Controller
     {
         \Cart::remove($id);
         return back()->with('success_message','商品をカートから削除しました');
+    }
+
+    public function switchToWishList($id){
+        //同じ商品がウィッシュリストに入ってないかチエック
+        $item = app('wishList')->getContent()->filter(function ($value) use ($id){
+            return $id === $value->id;
+        });
+        if($item->isNotEmpty()){
+            return redirect()->route('cart.index')->with('info_message','既に同じ商品がウイッシュリストに入っています');
+        }
+
+        $item = \Cart::get($id);
+        \Cart::remove($id);
+        $saleCondition = new \Darryldecode\Cart\CartCondition(array(
+            'name' => 'tax 10%',
+            'type' => 'tax',
+            'value' => '10%',
+            'target'=>'total',
+        ));
+        \Cart::condition($saleCondition);
+        app('wishList')->add($item->id,$item->name,$item->price,1)->associate('App\Product');
+        return redirect()->route('cart.index')->with('success_message',' 商品をウイッシュリスト入れました！');
+
     }
 }

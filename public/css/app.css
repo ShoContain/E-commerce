@@ -480,6 +480,7 @@ header .top-nav ul .cart-count span {
   font-size: 15px;
   text-align: left;
   padding: 20px;
+  margin-right: 50px;
 }
 
 .cart-section .cart-table-row .cart-option {
@@ -578,5 +579,15 @@ header .top-nav ul .cart-count span {
   justify-content: center;
   margin: 30px 0;
   color: lightslategrey;
+}
+
+.cart-section .wish-list-info {
+  display: flex;
+  color: lightslategrey;
+}
+
+.cart-section .wish-list-info span {
+  padding-top: 30px;
+  color: #FFD94D;
 }
 

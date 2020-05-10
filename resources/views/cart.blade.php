@@ -66,7 +66,10 @@
                                 @csrf
                                 <button type="submit" class="cart-options">削除</button>
                             </form>
-                            <a href="">ウィッシュリストに加える</a>
+                            <form action="{{route('cart.switchToWishList',$cartItem->id)}}" method="post">
+                                @csrf
+                                <button type="submit" class="cart-options">ウイッシュリストに加える</button>
+                            </form>
                         </div>
 
                     <div class="cart-option">
@@ -123,23 +126,37 @@
                 </div>
             @endif
 
-            <h2>ウィッシュリスト</h2>
+            @if(app('wishList')->getContent()->count()>0)
+                <div class="wish-list-info">
+                    <span><svg fill="currentColor" height="40" viewBox="0 0 512 511" width="70" xmlns="http://www.w3.org/2000/svg"><path d="M231.762 512.02l-88.32-45.403-88.317 45.403 16.883-96.243L0 347.141l99.46-14.133 43.981-87.145 43.985 87.145 99.46 14.133-72.007 68.636zm-88.32-90.31l35.097 18.044-6.691-38.137 27.836-26.527-38.516-5.473-17.727-35.117-17.722 35.117-38.516 5.473 27.836 26.527-6.691 38.137zM512 28.739L483.762.5 207.199 277.063l28.238 28.238zm-132.754-.035L350.937.535 151.755 200.72l28.309 28.168zm132.281 132.352l-28.242-28.239L303.57 312.531l28.242 28.239zm0 0"/></svg></span>
+                    <h2>WISH LIST</h2>
+                    <span><svg fill="currentColor" height="40" viewBox="0 0 512 511" width="70" xmlns="http://www.w3.org/2000/svg"><path d="M231.762 512.02l-88.32-45.403-88.317 45.403 16.883-96.243L0 347.141l99.46-14.133 43.981-87.145 43.985 87.145 99.46 14.133-72.007 68.636zm-88.32-90.31l35.097 18.044-6.691-38.137 27.836-26.527-38.516-5.473-17.727-35.117-17.722 35.117-38.516 5.473 27.836 26.527-6.691 38.137zM512 28.739L483.762.5 207.199 277.063l28.238 28.238zm-132.754-.035L350.937.535 151.755 200.72l28.309 28.168zm132.281 132.352l-28.242-28.239L303.57 312.531l28.242 28.239zm0 0"/></svg></span>
+                    <h2>{{ app('wishList')->getContent()->count() }}個の商品がウイッシュリストに入ってます</h2>
+                </div>
             <div class="saved-for-later cart-table">
+                @foreach(app('wishList')->getContent() as $wishList)
                 <div class="cart-table-row">
                     <div class="cart-table-left">
-                        <a href="">
-                            <img src="{{asset('/img/products/laptop-1.jpg')}}" alt="" class="cart-table-img">
+                        <a href="{{ route('shop.show',$wishList->model->slug) }}">
+                            <img src="{{asset('/img/products/'.$wishList->model->slug.'.jpg')}}" alt="" class="cart-table-img">
                         </a>
                         <div class="cart-item-details">
-                            <div class="cart-item-name"><a href="">Macbook Pro</a></div>
-                            <div class="cart-item-description">15 inch, 1TB SSD, 32GB RAM</div>
+                            <div class="cart-item-name"><a href="{{ route('shop.show',$wishList->model->slug) }}">{{ $wishList->model->name }}</a></div>
+                            <div class="cart-item-description">{{ $wishList->model->details }}</div>
                         </div>
                     </div> {{--end of cart-table-left--}}
 
                     <div class="cart-table-right">
                         <div class="cart-table-actions">
-                            <a href="">削除</a> <br>
-                            <a href="">ウィッシュリストに加える</a>
+                            <form action="{{route('wishlist.destroy',$wishList->id)}}" method="post">
+                                @method('delete')
+                                @csrf
+                                <button type="submit" class="cart-options">削除</button>
+                            </form>
+                            <form action="{{route('wishlist.switchToCart',$wishList->id)}}" method="post">
+                                @csrf
+                                <button type="submit" class="cart-options">ウイッシュリストに加える</button>
+                            </form>
                         </div>
 
                         <div class="cart-option">
@@ -151,12 +168,15 @@
                             </select>
                         </div>
 
-                        <div class="cart-table-price">24.000円</div>
+                        <div class="cart-table-price">{{ presentPrice($wishList->model->price) }}</div>
 
                     </div>  {{--end of cart-table-right--}}
                 </div> {{-- end of cart-table-row --}}
+                @endforeach
             </div> {{--end of saved-for-later--}}
-
+            @else
+                <h2>ウイッシュリストはまだ空です</h2>
+            @endif
         </div>
     </div> {{--end of cart-section--}}
 
