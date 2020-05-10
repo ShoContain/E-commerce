@@ -1,0 +1,18 @@
+.alert{
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+.alert-success{
+    color:white;
+    background: #b9dbb9;
+    border-color:$white;
+}
+
+.alert-danger{
+    color:$white;
+    background:#A62D3C;
+    border-color:$white;
+}
+

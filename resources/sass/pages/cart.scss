@@ -52,6 +52,18 @@
             padding-top: 35px;
             padding-left: 10px;
         }
+        .cart-options{
+            margin-bottom: 5px;
+            color: $text-color;
+            background: transparent;
+            padding: 0;
+            font-size: 14px;
+            border: none;
+            border-style: none;
+            &:hover{
+                color: lighten($text-color,30);
+            }
+        }
     }
 
     .have-code {
@@ -119,4 +131,11 @@
         display: flex;
         justify-content: space-between;
     }
+    .empty-cart-alert{
+        display: flex;
+        justify-content: center;
+        margin: 30px 0;
+        color: lightslategrey;
+    }
 }
+

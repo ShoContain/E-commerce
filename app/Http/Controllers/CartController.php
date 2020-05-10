@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Product;
+use Darryldecode\Cart\Cart;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -13,7 +15,8 @@ class CartController extends Controller
      */
     public function index()
     {
-        
+        $mightLikes = Product::mightAlsoLike()->get();
+        return view('cart',compact('mightLikes'));
     }
 
     /**
@@ -34,8 +37,10 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        \Cart::add($request->id,$request->name,$request->price,1)->associate('App\Product');
+        return redirect()->route('cart.index')->with('success_message','カートに入れました');
     }
+
 
     /**
      * Display the specified resource.
@@ -79,6 +84,7 @@ class CartController extends Controller
      */
     public function destroy($id)
     {
-        //
+        \Cart::remove($id);
+        return back()->with('success_message','商品をカートから削除しました');
     }
 }

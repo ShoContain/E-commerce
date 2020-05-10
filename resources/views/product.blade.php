@@ -30,7 +30,14 @@
                 {{ $product->description }}
             </p>
             <p>&nbsp;</p>
-            <a href="" class="button">カートに入れる</a>
+{{--            <a href="" class="button">カートに入れる</a>--}}
+            <form action="{{ route('cart.store') }}" method="POST">
+                @csrf
+                <input type="hidden" name="id" value="{{$product->id}}">
+                <input type="hidden" name="name" value="{{$product->name}}">
+                <input type="hidden" name="price" value="{{$product->price}}">
+                <button class="button" type="submit">カートに入れる</button>
+            </form>
         </div>
     </div> {{--end of product-section--}}
 
