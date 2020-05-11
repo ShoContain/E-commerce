@@ -57,6 +57,12 @@
             width: 100%;
         }
     }
+    .checkout-section{
+        grid-template-columns: 1fr;
+        .checkout-table-container{
+            margin: 0 10px;
+        }
+    }
 }
 /* Small Devices, Tablets */
 @media only screen and (max-width : 768px) {

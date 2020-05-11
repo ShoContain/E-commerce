@@ -19,7 +19,7 @@ class WishListProvider extends ServiceProvider
             $storage = $app['session'];
             $events = $app['events'];
             $instanceName = 'cart_2';
-            $session_key = '88uuiioo99888';
+            $session_key = config('services.wishlist.key');
             return new Cart(
                 $storage,
                 $events,

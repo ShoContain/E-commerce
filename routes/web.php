@@ -27,9 +27,10 @@ Route::post ('/cart/switchToWishList/{id}','CartController@switchToWishList')->n
 
 //ウィッシュリスト
 Route::delete ('/wishList/{id}','WishListController@destroy')->name('wishlist.destroy');
-Route::post ('/wishList/switchToCart/{id}','WishListController@switchToCart')
-    ->name('wishlist.switchToCart');
+Route::post ('/wishList/switchToCart/{id}','WishListController@switchToCart')->name('wishlist.switchToCart');
 
+//チエックアウト
+Route::get('/checkout','CheckOutController@index')->name('checkout.index');
 
 //カートを空にする
 Route::get('empty',function(){
@@ -41,7 +42,6 @@ Route::get('empty/wishlist',function(){
 });
 
 Route::view('/product','product');
-Route::view('/checkout','checkout');
 Route::view('/thankyou','thankyou');
 
 

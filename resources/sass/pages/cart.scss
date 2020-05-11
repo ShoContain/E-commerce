@@ -140,11 +140,16 @@
 
     .wish-list-info{
         display: flex;
-        color: lightslategrey;
+        justify-content: center;
+        color: #6d6644;
         span{
             padding-top: 30px;
             color: #FFD94D;
         }
     }
+    .empty-wish-list{
+        color: lightslategrey;
+    }
 }
+
 

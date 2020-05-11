@@ -66,6 +66,14 @@
   .cart-section .have-code-container {
     width: 100%;
   }
+
+  .checkout-section {
+    grid-template-columns: 1fr;
+  }
+
+  .checkout-section .checkout-table-container {
+    margin: 0 10px;
+  }
 }
 
 /* Small Devices, Tablets */

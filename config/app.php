@@ -166,13 +166,13 @@ return [
          * Package Service Providers...
          */
         Darryldecode\Cart\CartServiceProvider::class,
-        App\Providers\WishListProvider::class,
 
         /*
          * Application Service Providers...
          */
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
+        App\Providers\WishListProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
