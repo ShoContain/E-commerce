@@ -2,12 +2,9 @@
 
 namespace App\Http\Controllers;
 
-
-use Cartalyst\Stripe\Laravel\Facades\Stripe;
-use Darryldecode\Cart\Cart;
 use Illuminate\Http\Request;
 
-class CheckOutController extends Controller
+class ConfirmationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +13,10 @@ class CheckOutController extends Controller
      */
     public function index()
     {
-        return view('checkout');
+        if(!session()->has('thankyou_message')){
+        return redirect('/');
+    }
+        return view('thankyou');
     }
 
     /**
@@ -37,25 +37,7 @@ class CheckOutController extends Controller
      */
     public function store(Request $request)
     {
-
-        try {
-            $charge = Stripe::charges()->create([
-                'amount'=>\Cart::getTotal()/100,
-                'currency'=>'jpy',
-                'source' => $request->stripeToken,
-                'description'=>'Chargeテスト',
-                'receipt_email'=>$request->email,
-                'metadata'=>[
-//                    'contents'=>$content,
-//                    'quantity'=>\Cart::getContent()->count(),
-                ],
-            ]);
-            \Cart::clear();
-            //支払い確認ページにリダイレクト
-            return redirect('/thankyou')->with('thankyou_message','お支払いありがとうございます、間も無くお支払い確認メールをお届けします');
-        }catch (\Exception $e){
-            echo 'error';
-        }
+        //
     }
 
     /**

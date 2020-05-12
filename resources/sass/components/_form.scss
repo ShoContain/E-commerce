@@ -1,4 +1,10 @@
 form {
+    input{
+        &:focus{
+            outline: none;
+            box-shadow: 0 1px 3px 0 #cfd7df;
+        }
+    }
     .half-form {
         display: grid;
         grid-template-columns: 1fr 1fr;

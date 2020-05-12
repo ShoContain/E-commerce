@@ -31,18 +31,11 @@ Route::post ('/wishList/switchToCart/{id}','WishListController@switchToCart')->n
 
 //チエックアウト
 Route::get('/checkout','CheckOutController@index')->name('checkout.index');
+Route::post('/checkout','CheckOutController@store')->name('checkout.store');
 
-//カートを空にする
-Route::get('empty',function(){
-   \Cart::clear();
-});
-//ウィッシュリストを空にする
-Route::get('empty/wishlist',function(){
-    app('wishList')->clear();
-});
+//Thank youページ
+Route::get('/thankyou','ConfirmationController@index')->name('confirmation.index');
 
-Route::view('/product','product');
-Route::view('/thankyou','thankyou');
 
 
 Auth::routes();

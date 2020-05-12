@@ -119,7 +119,7 @@ h2 {
 
 .button-primary {
   border: 1px solid #e9e9e9;
-  color: #a57575;
+  color: #5d3f3f;
   background: #8be0cf;
   padding: 12px 30px;
 }
@@ -212,6 +212,11 @@ h2 {
   color: #b1b0ae;
   background: #dede7c;
   border-color: #e9e9e9;
+}
+
+form input:focus {
+  outline: none;
+  box-shadow: 0 1px 3px 0 #cfd7df;
 }
 
 form .half-form {
@@ -692,10 +697,46 @@ header .top-nav ul .cart-count span {
 
 .checkout-section .checkout-total .checkout-total-right {
   text-align: right;
+  letter-spacing: 0.03rem;
 }
 
 .checkout-section .checkout-total .checkout-total-right .checkout-total-span {
   font-weight: bold;
   display: block;
+}
+
+.checkout-section .StripeElement {
+  padding: 16px;
+  border: 1px solid #ccc;
+  background-color: white;
+}
+
+.checkout-section .StripeElement--focus {
+  box-shadow: 0 1px 3px 0 #cfd7df;
+}
+
+.checkout-section .StripeElement--invalid {
+  border-color: #fa755a;
+}
+
+.checkout-section .StripeElement--webkit-autofill {
+  background-color: #fefde5 !important;
+}
+
+.checkout-section #card-errors {
+  margin-top: 10px;
+  color: #cc0f60;
+}
+
+.thank-you-section {
+  text-align: center;
+}
+
+.thank-you-section div {
+  margin: 50px 0;
+}
+
+.thank-you-section div .thank-you-to-home {
+  display: inline-block;
 }
 

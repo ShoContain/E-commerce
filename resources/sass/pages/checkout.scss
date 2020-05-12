@@ -61,12 +61,34 @@
         line-height: 1.7;
         .checkout-total-right {
             text-align: right;
+            letter-spacing: 0.03rem;
             .checkout-total-span {
                 font-weight: bold;
                 display: block;
             }
         }
     }
+     .StripeElement {
+         padding: 16px;
+         border: 1px solid #ccc;
+         background-color: white;
+     }
+
+     .StripeElement--focus {
+         box-shadow: 0 1px 3px 0 #cfd7df;
+     }
+
+     .StripeElement--invalid {
+         border-color: #fa755a;
+     }
+
+     .StripeElement--webkit-autofill {
+         background-color: #fefde5 !important;
+     }
+     #card-errors{
+         margin-top: 10px;
+         color: #cc0f60;
+     }
  }
 
 

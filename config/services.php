@@ -29,8 +29,15 @@ return [
         'secret' => env('AWS_SECRET_ACCESS_KEY'),
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
+
     'wishlist' => [
         'key' => env('WISHLIST_KEY'),
+    ],
+
+    'stripe'=>[
+        'model'=>App\User::class,
+        'key'=>env('STRIPE_PUB_KEY'),
+        'secret'=>env('STRIPE_SEC_KEY'),
     ],
 
 ];
