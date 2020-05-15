@@ -19,6 +19,9 @@
     <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
     <link rel="stylesheet" href="{{ mix('/css/responsive.css') }}">
 
+    <!-- Script -->
+    <script src="{{ asset('js/app.js') }}"></script>
+
     @yield('extra-css')
 </head>
 

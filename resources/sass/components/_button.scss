@@ -28,5 +28,8 @@
     &:hover{
         background:#3acbad;
         color: $text-color;
-    }
+    }&:disabled{
+        background: lighten(#3acbad,20%);
+         cursor: not-allowed;
+     }
 }

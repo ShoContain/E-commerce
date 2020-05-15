@@ -21,6 +21,7 @@ Route::get('/shop/{slug}','ShopController@show')->name('shop.show');
 //カートRoute
 Route::get ('/cart','CartController@index')->name('cart.index');
 Route::post ('/cart','CartController@store')->name('cart.store');
+Route::patch('/cart/{id}','CartController@update')->name('cart.update');
 Route::delete ('/cart/{id}','CartController@destroy')->name('cart.destroy');
 Route::post ('/cart','CartController@store')->name('cart.store');
 Route::post ('/cart/switchToWishList/{id}','CartController@switchToWishList')->name('cart.switchToWishList');
@@ -35,7 +36,6 @@ Route::post('/checkout','CheckOutController@store')->name('checkout.store');
 
 //Thank youページ
 Route::get('/thankyou','ConfirmationController@index')->name('confirmation.index');
-
 
 
 Auth::routes();

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 
+use App\Http\Requests\CheckoutRequest;
+use Cartalyst\Stripe\Exception\CardErrorException;
 use Cartalyst\Stripe\Laravel\Facades\Stripe;
 use Darryldecode\Cart\Cart;
 use Illuminate\Http\Request;
@@ -35,8 +37,11 @@ class CheckOutController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CheckoutRequest $request)
     {
+        $contents = \Cart::getContent()->map(function ($items){
+            return $items->model->slug.','.$items->quantity;
+        })->values()->toJson();
 
         try {
             $charge = Stripe::charges()->create([
@@ -46,15 +51,16 @@ class CheckOutController extends Controller
                 'description'=>'Chargeテスト',
                 'receipt_email'=>$request->email,
                 'metadata'=>[
-//                    'contents'=>$content,
-//                    'quantity'=>\Cart::getContent()->count(),
+                    'contents'=>$contents,
+                    'quantity'=>\Cart::getContent()->count(),
                 ],
             ]);
             \Cart::clear();
             //支払い確認ページにリダイレクト
-            return redirect('/thankyou')->with('thankyou_message','お支払いありがとうございます、間も無くお支払い確認メールをお届けします');
-        }catch (\Exception $e){
-            echo 'error';
+            return redirect('/thankyou')
+                ->with('thankyou_message','お支払いありがとうございます、間も無くお支払い確認メールをお届けします');
+        }catch (CardErrorException $e){
+            return back()->withErrors('エラー: '.$e->getMessage());
         }
     }
 

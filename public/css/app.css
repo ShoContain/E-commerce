@@ -38,6 +38,10 @@ button {
   cursor: pointer;
 }
 
+ul {
+  list-style: none;
+}
+
 body {
   font-family: "Roboto", Arial, sans-serif;
   font-size: 18px;
@@ -127,6 +131,11 @@ h2 {
 .button-primary:hover {
   background: #3acbad;
   color: #212121;
+}
+
+.button-primary:disabled {
+  background: #8be0cf;
+  cursor: not-allowed;
 }
 
 .section-description {
@@ -619,6 +628,10 @@ header .top-nav ul .cart-count span {
 
 .cart-section .empty-wish-list {
   color: lightslategrey;
+}
+
+.cart-section .empty-wish-list h2 {
+  text-align: center;
 }
 
 .checkout-header {

@@ -40,7 +40,7 @@
              @endif
 
             @if(Cart::getContent()->count()>0)
-                <h2>{{ Cart::getContent()->count() }}個の商品がカートに入ってます</h2>
+                <h2>{{ Cart::getTotalQuantity() }}個の商品がカートに入ってます</h2>
 
             <div class="cart-table">
                 @foreach(Cart::getContent() as $cartItem)
@@ -73,15 +73,14 @@
                         </div>
 
                     <div class="cart-option">
-                        <select name="" id="" class="quantity">
-                            <option value="" selected>1</option>
-                            <option value="">2</option>
-                            <option value="">3</option>
-                            <option value="">4</option>
+                        <select name="quantity" class="quantity" data-id="{{$cartItem->id}}">
+                            @for($i=1;$i<=4;$i++)
+                                <option {{ $cartItem->quantity===$i ? "selected":''}}>{{$i}}</option>
+                            @endfor
                         </select>
                     </div>
 
-                    <div class="cart-table-price">{{ $cartItem->model->presentPrice()}}</div>
+                    <div class="cart-table-price">{{ presentPrice($cartItem->price*$cartItem->quantity)}}</div>
 
                     </div>  {{--end of cart-table-right--}}
                 </div> {{-- end of cart-table-row --}}
@@ -158,11 +157,11 @@
                         </div>
 
                         <div class="cart-option">
-                            <select name="" id="" class="quantity">
-                                <option value="" selected>1</option>
-                                <option value="">2</option>
-                                <option value="">3</option>
-                                <option value="">4</option>
+                            <select name="quantity" id="" class="quantity">
+                                <option value="1" selected>1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
                             </select>
                         </div>
 
@@ -181,4 +180,31 @@
     </div> {{--end of cart-section--}}
 
     @include('component.might-like')
+@endsection
+
+@section('extra-js')
+    <script>
+        (function() {
+            const classname = document.querySelectorAll('.quantity')
+
+            Array.from(classname).forEach(function (element) {
+                element.addEventListener('change',function () {
+                    const id = element.getAttribute('data-id');
+                    axios.patch(`/cart/${id}`,{
+                        quantity:this.value,
+
+                    }).then(function (response) {
+                        console.log(response);
+                        //指定のURLを取得
+                        window.location.href=`{{route('cart.index')}}`
+
+                    }).catch(function (error) {
+                        console.log(error);
+                        window.location.href=`{{route('cart.index')}}`
+                    })
+                })
+            })
+
+        }());
+    </script>
 @endsection

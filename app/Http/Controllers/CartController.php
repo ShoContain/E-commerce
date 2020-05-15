@@ -6,6 +6,7 @@ use App\Product;
 use Darryldecode\Cart\Cart;
 use DebugBar\DebugBar;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class CartController extends Controller
 {
@@ -53,6 +54,7 @@ class CartController extends Controller
         ));
         \Cart::condition($saleCondition);
         \Cart::add($request->id,$request->name,$request->price,1)->associate('App\Product');
+
         return redirect()->route('cart.index')->with('success_message','カートに入れました');
         }
     }
@@ -89,7 +91,21 @@ class CartController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validation = Validator::make($request->all(),[
+            'quantity'=>'required|numeric|between:1,4',
+        ]);
+        if($validation->fails()){
+            session()->flash('errors',collect(['数量の変更に失敗しました']));
+            return response()->json(['success'=>false],400);
+        }
+        \Cart::update($id,array(
+            'quantity'=>array(
+                'relative'=>false,
+                'value'=>$request->quantity
+            ),
+        ));
+        session()->flash('success_message','数量を変更しました');
+        return response()->json(['success'=>true]);
     }
 
     /**

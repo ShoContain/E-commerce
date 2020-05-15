@@ -36,36 +36,36 @@
                 <h2>お支払い情報</h2>
                 <div class="form-group">
                     <label for="email">メールアドレス</label>
-                    <input type="email" class="form-control" id="email" name="email" value="{{old('email')}}" >
+                    <input type="email" class="form-control" id="email" name="email" value="{{old('email')}}"  required>
                 </div>
                 <div class="form-group">
                     <label for="name">名前</label>
-                    <input type="text" class="form-control" id="name" name="name" value="{{old('name')}}" >
+                    <input type="text" class="form-control" id="name" name="name" value="{{old('name')}}"  required>
                 </div>
                 <div class="form-group">
                     <label for="address">住所</label>
-                    <input type="text" class="form-control" id="address" name="address" value="{{old('address')}}" >
+                    <input type="text" class="form-control" id="address" name="address" value="{{old('address')}}"  required>
                 </div>
 
                 <div class="half-form">
                     <div class="form-group">
                         <label for="city">市・町・村</label>
-                        <input type="text" class="form-control" id="city" name="city" value="{{old('city')}}" >
+                        <input type="text" class="form-control" id="city" name="city" value="{{old('city')}}"  required>
                     </div>
                     <div class="form-group">
                         <label for="prefecture">都道府県</label>
-                        <input type="text" class="form-control" id="prefecture" name="prefecture" value="{{old('prefecture')}}">
+                        <input type="text" class="form-control" id="prefecture" name="prefecture" value="{{old('prefecture')}}" required>
                     </div>
                 </div> {{--end of half-form--}}
 
                 <div class="half-form">
                     <div class="form-group">
                         <label for="postal-code">郵便番号</label>
-                        <input type="text" class="form-control" id="postal-code" name="postal-code" value="{{old('postal-code')}}">
+                        <input type="text" class="form-control" id="postal-code" name="postal-code" value="{{old('postal-code')}}" required>
                     </div>
                     <div class="form-group">
                         <label for="phone">電話番号</label>
-                        <input type="text" class="form-control" id="phone" name="phone" value="{{old('phone')}}">
+                        <input type="text" class="form-control" id="phone" name="phone" value="{{old('phone')}}" required>
                     </div>
                 </div> {{--end of half-form--}}
 
@@ -84,7 +84,7 @@
                      <div id="card-errors" role="alert"></div>
                  </div>
 
-                    <button type="submit" class="button-primary full-width">支払いを完了する</button>
+                    <button type="submit" class="button-primary full-width" id="complete-order">支払いを完了する</button>
                 </form>
             </div>
 
@@ -103,7 +103,7 @@
                         </div>
                         <div class="checkout-table-right">
                             <div class="checkout-item-quantity">
-                                1
+                                {{$item->quantity}}
                             </div>
                         </div>
                     </div>
@@ -178,6 +178,10 @@
         var form = document.getElementById('payment-form');
         form.addEventListener('submit', function(event) {
             event.preventDefault();
+
+            //ボタンを２度以上押す、誤送を防ぐ
+            document.getElementById('complete-order').disabled=true;
+
             var options = {
                 name:document.getElementById('name_on_card').value,
                 address_line1: document.getElementById('address').value,
@@ -190,6 +194,9 @@
                     // Inform the user if there was an error.
                     var errorElement = document.getElementById('card-errors');
                     errorElement.textContent = result.error.message;
+
+                    //エラーが出たら再度ボタンを利用可能にする
+                    document.getElementById('complete-order').disabled=false;
                 } else {
                     // Send the token to your server.
                     stripeTokenHandler(result.token);
