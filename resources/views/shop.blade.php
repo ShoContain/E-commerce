@@ -1,8 +1,9 @@
 @extends('layout')
 
-@section('title','Products')
+@section('title','Shop')
 
 @section('extra-css')
+
 @endsection
 
 @section('content')
@@ -19,35 +20,47 @@
     <div class="products-section container">
         <div class="sidebar">
             <h3>カテゴリー</h3>
-            <ul>
-                <li><a href="">ノートパソコン</a></li>
-                <li><a href="">デスクトップパソコン</a></li>
-                <li><a href="">スマートフォン</a></li>
-                <li><a href="">タブレット</a></li>
-                <li><a href="">テレビ</a></li>
-                <li><a href="">デジタルカメラ</a></li>
-                <li><a href="">電化製品</a></li>
-            </ul>
-
-            <h3>値段</h3>
-            <ul>
-                <li><a href="">0-7000円</a></li>
-                <li><a href="">7000-2万5千円</a></li>
-                <li><a href="">2万5千円以上</a></li>
-            </ul>
+                <ul>
+                    @foreach($categories as $category)
+                        <li><a href="{{ route('shop.index',['category'=>$category->slug]) }}">{{ $category->name }}</a></li>
+                    @endforeach
+                </ul>
+{{--            <h3>値段</h3>--}}
+{{--            <ul>--}}
+{{--                <li><a href="">0-7000円</a></li>--}}
+{{--                <li><a href="">7000-2万5千円</a></li>--}}
+{{--                <li><a href="">2万5千円以上</a></li>--}}
+{{--            </ul>--}}
         </div> {{--end of sidebar--}}
 
         <div>
-            <h1 class="stylish-border">ラップトップ</h1>
-            <div class="products text-center"> <!--grid-container-->
-                @foreach($products as $product)
-                <div class="product">
-                    <a href="{{ route('shop.show',$product->slug) }}"><img src={{asset('img/products/'.$product->slug.'.jpg')}} alt=""></a>
-                    <a href="{{ route('shop.show',$product->slug) }}"><div>{{ $product->name }}</div></a>
-                    <div class="product-price">{{ $product->presentPrice() }}</div>
+            <div class="products-header">
+                <h1 class="stylish-border">{{ $categoryName }}</h1>
+                <div>
+                    <strong>値段</strong>
+                    <a href="{{ route('shop.index',['category'=>request()->category,'sort'=>'low_high']) }}">安い順</a>
+                    <a href="{{ route('shop.index',['category'=>request()->category,'sort'=>'high_low']) }}">高い順</a>
                 </div>
-                @endforeach
+            </div>
+            <div class="products text-center"> <!--grid-container-->
+                @forelse($products as $product)
+                    <div class="product">
+                        <a href="{{ route('shop.show',$product->slug) }}"><img src={{asset('img/products/'.$product->slug.'.jpg')}} alt=""></a>
+                        <a href="{{ route('shop.show',$product->slug) }}"><div>{{ $product->name }}</div></a>
+                        <div class="product-price">{{ $product->presentPrice() }}</div>
+                    </div>
+                @empty
+                    <div style="text-align: left">商品が見つかりませんでした</div>
+                @endforelse
             </div> {{--end of products--}}
+
+            <div class="pagination-content">
+{{--                {{ $products->links() }}--}}
+{{--                    上のpaginationだとリンクを押した際にクエリがリセットされるので
+                        検索条件を保持させるためにappendsメソッドを使う--}}
+                    {{ $products->appends(request()->input())->links() }}
+            </div>
+
         </div>
     </div>
 

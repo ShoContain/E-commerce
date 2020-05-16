@@ -2,7 +2,6 @@
     display: grid;
     grid-template-columns: 1fr 3fr;
     margin: 60px auto 60px;
-
     .products {
         display: grid;
         grid-template-columns:repeat(3,1fr);
@@ -10,3 +9,13 @@
         gap: 30px;
     }
 }
+
+.products-header{
+    display: flex;
+    justify-content: space-between;
+    div{
+        padding-top: 30px;
+    }
+}
+
+
