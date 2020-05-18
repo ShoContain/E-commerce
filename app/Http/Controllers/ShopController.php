@@ -28,7 +28,7 @@ class ShopController extends Controller
             $categoryName = 'オススメ商品';
         }
 
-        //paginateを付け足す
+        //paginateする
         if (request()->sort =='low_high'){
             $products = $products->orderBy('price','asc')->paginate($pagination);
         }elseif (request()->sort=='high_low'){

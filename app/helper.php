@@ -7,3 +7,7 @@ function presentPrice($price){
 function getTax($price){
     return number_format($price*0.1).'円';
 }
+
+function setActiveCategory($category){
+    return $category == request()->category ? 'active':'';
+}

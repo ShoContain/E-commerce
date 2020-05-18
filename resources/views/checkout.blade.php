@@ -113,17 +113,44 @@
                 <div class="checkout-total">
                     <div class="checkout-total-left">
                         小計 <br>
+                        @if(session()->exists('coupon'))
+                            <div style="display: flex">
+                                <span class="coupon"> クーポン 番号({{ session()->get('coupon')['name'] }})</span>
+                                <form action="{{ route('coupon.destroy') }}" method="post">
+                                    @csrf
+                                    @method('delete')
+                                    <button type="submit" class="button-coupon">キャンセル</button>
+                                </form>
+                            </div>
+                            <hr>
+                            割引後の小計 <br>
+                        @endif
                         税（10%）<br>
                         <span class="checkout-total-span">合計(税込)</span> <br>
                     </div>
 
                     <div class="checkout-total-right">
                         {{ presentPrice(Cart::getSubTotal()) }} <br>
-                        {{ getTax(Cart::getSubTotal()) }} <br>
-                        <span class="checkout-total-span">{{ presentPrice(Cart::getTotal()) }}</span> <br>
+                        @if(session()->exists('coupon'))
+                            <span class="coupon"> —{{ presentPrice($discount) }}</span>
+                            <hr>
+                            {{ presentPrice($newSubTotal) }}<br>
+                        @endif
+                        {{ presentPrice($newTax) }} <br>
+                        <span class="checkout-total-span">{{ presentPrice($newTotal) }}</span> <br>
                     </div>
 
                 </div> {{--end of checkout-total--}}
+                @if(!session()->exists('coupon'))
+                    <a href="#" class="have-code">クーポンを持っていますか？</a>
+                    <div class="have-code-container">
+                        <form action="{{ route('coupon.confirm')}}" method="post">
+                            @csrf
+                            <input type="text" name="coupon">
+                            <button type="submit" class="button button-apply">適用</button>
+                        </form>
+                    </div> {{--end of have-code-container--}}
+                @endif
             </div> {{--end of checkout-table-container --}}
         </div> {{--end of checkout-section--}}
     </div>

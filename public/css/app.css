@@ -138,6 +138,17 @@ h2 {
   cursor: not-allowed;
 }
 
+.button-coupon {
+  border-style: none;
+  color: #212121;
+  background: transparent;
+  -webkit-user-select: auto;
+     -moz-user-select: auto;
+      -ms-user-select: auto;
+          user-select: auto;
+  margin-top: 5px;
+}
+
 .section-description {
   width: 80%;
   margin: auto;
@@ -491,6 +502,10 @@ header .top-nav ul .cart-count span {
   gap: 30px;
 }
 
+.products-section .sidebar li.active {
+  font-weight: bold;
+}
+
 .products-header {
   display: flex;
   justify-content: space-between;
@@ -532,11 +547,6 @@ header .top-nav ul .cart-count span {
 
 .product-section-info p {
   margin-bottom: 16px;
-}
-
-.cart-section {
-  display: grid;
-  grid-template-columns: 3fr 1fr;
 }
 
 .cart-section h2 {
@@ -594,6 +604,7 @@ header .top-nav ul .cart-count span {
 }
 
 .cart-section .cart-table-row .cart-options {
+  border-style: none;
   margin-bottom: 5px;
   color: #212121;
   background: transparent;
@@ -603,42 +614,6 @@ header .top-nav ul .cart-count span {
 
 .cart-section .cart-table-row .cart-options:hover {
   color: #6e6e6e;
-}
-
-.cart-section .have-code {
-  display: block;
-  margin: 20px 0;
-}
-
-.cart-section .have-code-container {
-  border: solid 1px #86888e;
-  width: 50%;
-  padding: 16px;
-}
-
-.cart-section .have-code-container form {
-  display: flex;
-  justify-content: flex-start;
-}
-
-.cart-section .have-code-container input {
-  font-size: 16px;
-  padding: 0 7px;
-  width: 70%;
-  outline: none;
-  color: #212121;
-}
-
-.cart-section .have-code-container button {
-  font-size: 10px;
-  font-weight: bold;
-  padding: 15px 20px;
-}
-
-.cart-section .have-code-container button:hover {
-  background: #8097a7;
-  color: #e5e8e6;
-  border: 1px solid #e5e8e6;
 }
 
 .cart-section .cart-total {
@@ -773,6 +748,11 @@ header .top-nav ul .cart-count span {
   line-height: 1.7;
 }
 
+.checkout-section .checkout-total .coupon {
+  color: #db4d4d;
+  display: block;
+}
+
 .checkout-section .checkout-total .checkout-total-right {
   text-align: right;
   letter-spacing: 0.03rem;
@@ -804,6 +784,41 @@ header .top-nav ul .cart-count span {
 .checkout-section #card-errors {
   margin-top: 10px;
   color: #cc0f60;
+}
+
+.checkout-section .have-code {
+  display: block;
+  margin: 20px 0;
+}
+
+.checkout-section .have-code-container {
+  border: solid 1px #86888e;
+  padding: 16px;
+}
+
+.checkout-section .have-code-container form {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.checkout-section .have-code-container input {
+  font-size: 16px;
+  padding: 0 7px;
+  width: 70%;
+  outline: none;
+  color: #212121;
+}
+
+.checkout-section .have-code-container button {
+  font-size: 10px;
+  font-weight: bold;
+  padding: 15px 20px;
+}
+
+.checkout-section .have-code-container button:hover {
+  background: #8097a7;
+  color: #e5e8e6;
+  border: 1px solid #e5e8e6;
 }
 
 .thank-you-section {

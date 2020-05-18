@@ -11,6 +11,8 @@ use Illuminate\Http\Request;
 
 class CheckOutController extends Controller
 {
+//    税率
+    const tax = 10 / 100;
     /**
      * Display a listing of the resource.
      *
@@ -18,17 +20,13 @@ class CheckOutController extends Controller
      */
     public function index()
     {
-        return view('checkout');
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $discount = $this->getNumbers()->get('discount') ;
+        $newSubTotal = $this->getNumbers()->get('newSubTotal');
+        $newTax = $this->getNumbers()->get('newTax');
+        $newTotal = $this->getNumbers('newTotal')->get('newTotal');
+        return view('checkout',compact([
+            'newSubTotal','discount','newTax','newTotal'
+        ]));
     }
 
     /**
@@ -45,7 +43,7 @@ class CheckOutController extends Controller
 
         try {
             $charge = Stripe::charges()->create([
-                'amount'=>\Cart::getTotal()/100,
+                'amount'=>$this->getNumbers()->get('newTotal')/100,
                 'currency'=>'jpy',
                 'source' => $request->stripeToken,
                 'description'=>'Chargeテスト',
@@ -53,6 +51,7 @@ class CheckOutController extends Controller
                 'metadata'=>[
                     'contents'=>$contents,
                     'quantity'=>\Cart::getContent()->count(),
+                    'discount'=>collect(session()->get('coupon'))->toJson(),
                 ],
             ]);
             \Cart::clear();
@@ -64,48 +63,20 @@ class CheckOutController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function getNumbers()
     {
-        //
+        $discount = session()->get('coupon')['discount'] ?? 0 ;
+        $newSubTotal = \Cart::getSubTotal()-$discount;
+        $newTax = $newSubTotal * self::tax;
+        $newTotal = $newTax + $newSubTotal;
+
+        return collect([
+            'discount'=>$discount,
+            'newSubTotal'=>$newSubTotal,
+            'newTax'=>$newTax,
+            'newTotal'=>$newTotal,
+        ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

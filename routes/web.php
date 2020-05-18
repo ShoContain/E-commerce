@@ -23,7 +23,6 @@ Route::get ('/cart','CartController@index')->name('cart.index');
 Route::post ('/cart','CartController@store')->name('cart.store');
 Route::patch('/cart/{id}','CartController@update')->name('cart.update');
 Route::delete ('/cart/{id}','CartController@destroy')->name('cart.destroy');
-Route::post ('/cart','CartController@store')->name('cart.store');
 Route::post ('/cart/switchToWishList/{id}','CartController@switchToWishList')->name('cart.switchToWishList');
 
 //ウィッシュリスト
@@ -33,6 +32,10 @@ Route::post ('/wishList/switchToCart/{id}','WishListController@switchToCart')->n
 //チエックアウト
 Route::get('/checkout','CheckOutController@index')->name('checkout.index');
 Route::post('/checkout','CheckOutController@store')->name('checkout.store');
+
+//クーポン
+Route::post('/coupon','CouponController@confirm')->name('coupon.confirm');
+Route::delete('/coupon','CouponController@destroy')->name('coupon.destroy');
 
 //Thank youページ
 Route::get('/thankyou','ConfirmationController@index')->name('confirmation.index');

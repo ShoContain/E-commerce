@@ -1,7 +1,4 @@
 .cart-section {
-    display: grid;
-    grid-template-columns: 3fr 1fr;
-
     h2 {
         margin: 30px 0;
     }
@@ -53,6 +50,7 @@
             padding-left: 10px;
         }
         .cart-options{
+            border-style: none;
             margin-bottom: 5px;
             color: $text-color;
             background: transparent;
@@ -64,41 +62,6 @@
         }
     }
 
-    .have-code {
-        display: block;
-        margin: 20px 0;
-    }
-
-    .have-code-container {
-        border: solid 1px $text-color-light;
-        width: 50%;
-        padding: 16px;
-
-        form {
-            display: flex;
-            justify-content: flex-start;
-        }
-
-        input {
-            font-size: 16px;
-            padding: 0 7px;
-            width: 70%;
-            outline: none;
-            color: $text-color;
-        }
-
-        button {
-            font-size: 10px;
-            font-weight: bold;
-            padding: 15px 20px;
-
-            &:hover {
-                background: #8097a7;
-                color: #e5e8e6;
-                border: 1px solid #e5e8e6;
-            }
-        }
-    }
     .cart-total {
         margin: 30px 0;
         padding: 20px;

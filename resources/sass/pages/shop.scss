@@ -8,7 +8,13 @@
         margin: 60px $gutter;
         gap: 30px;
     }
+    .sidebar {
+        li.active{
+            font-weight: bold;
+        }
+    }
 }
+
 
 .products-header{
     display: flex;

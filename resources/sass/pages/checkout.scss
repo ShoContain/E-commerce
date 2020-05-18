@@ -59,6 +59,10 @@
         border-bottom: 1px solid $text-color;
         padding-top: 10px;
         line-height: 1.7;
+        .coupon{
+            color: #db4d4d;
+            display: block;
+        }
         .checkout-total-right {
             text-align: right;
             letter-spacing: 0.03rem;
@@ -88,6 +92,40 @@
      #card-errors{
          margin-top: 10px;
          color: #cc0f60;
+     }
+     .have-code{
+         display: block;
+         margin: 20px 0;
+     }
+
+     .have-code-container {
+         border: solid 1px $text-color-light;
+         padding: 16px;
+
+         form {
+             display: flex;
+             justify-content: flex-start;
+         }
+
+         input {
+             font-size: 16px;
+             padding: 0 7px;
+             width: 70%;
+             outline: none;
+             color: $text-color;
+         }
+
+         button {
+             font-size: 10px;
+             font-weight: bold;
+             padding: 15px 20px;
+
+             &:hover {
+                 background: #8097a7;
+                 color: #e5e8e6;
+                 border: 1px solid #e5e8e6;
+             }
+         }
      }
  }
 

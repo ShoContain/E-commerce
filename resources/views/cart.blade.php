@@ -87,14 +87,6 @@
                 @endforeach
             </div> {{--end of cart-table--}}
 
-        <a href="#" class="have-code">コードを持っていますか？</a>
-            <div class="have-code-container">
-                <form action="">
-                    <input type="text">
-                    <button type="submit" class="button button-apply">入力</button>
-                </form>
-            </div> {{--end of have-code-container--}}
-
             <div class="cart-total">
                 <div class="cart-total-left">
                     送料は無料でお手配いたします。
