@@ -16,6 +16,8 @@ class CouponController extends Controller
         session()->put('coupon',[
             'name'=>$coupon->code,
             'discount'=>$coupon->discount(\Cart::getSubTotal()),
+            'value'=>$coupon->type == 'fixed' ? $coupon->value:null,
+            'percent_off'=>$coupon->type == 'percent' ? $coupon->percent_off:null,
         ]);
         return back()->with('success_message','クーポンが適用されました');
     }

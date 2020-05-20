@@ -67,7 +67,7 @@ class CheckOutController extends Controller
     {
         $discount = session()->get('coupon')['discount'] ?? 0 ;
         $newSubTotal = \Cart::getSubTotal()-$discount;
-        $newTax = $newSubTotal * self::tax;
+        $newTax = floor($newSubTotal * self::tax);
         $newTotal = $newTax + $newSubTotal;
 
         return collect([

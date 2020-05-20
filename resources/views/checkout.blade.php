@@ -115,8 +115,12 @@
                         小計 <br>
                         @if(session()->exists('coupon'))
                             <div style="display: flex">
-                                <span class="coupon"> クーポン 番号({{ session()->get('coupon')['name'] }})</span>
-                                <form action="{{ route('coupon.destroy') }}" method="post">
+                                @if(session()->get('coupon')['percent_off'])
+                                    <span class="coupon"> クーポン適用 {{ session()->get('coupon')['percent_off'] }}% OFF</span>
+                                @else
+                                    <span class="coupon"> クーポン適用 {{ session()->get('coupon')['value'] }}円 OFF</span>
+                                @endif
+                                    <form action="{{ route('coupon.destroy') }}" method="post">
                                     @csrf
                                     @method('delete')
                                     <button type="submit" class="button-coupon">キャンセル</button>
