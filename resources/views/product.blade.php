@@ -1,4 +1,3 @@
-
 @extends('layout')
 
 @section('title',$product->name)
@@ -20,9 +19,20 @@
     </div>  {{--end of breadcrumb--}}
 
     <div class="product-section container">
-        <div class="product-section-image">
-            <img src={{ asset('img/products/'.$product->slug.'.jpg') }} alt="product">
+        <div>
+            <div class="product-section-image">
+                <img src="{{ productImage($product->image) }}" alt="product">
+            </div>
+            @if($product->images)
+                <div>
+                {{--(array)キャストしてもエラーが出たので、decodeしてforeachで回す--}}
+                    @foreach(json_decode($product->images,true ) as $image)
+                        <img src="{{ productImage($image) }}" alt="product">
+                    @endforeach
+                </div>
+            @endif
         </div>
+
         <div class="product-section-info">
             <h1 class="product-section-title">{{ $product->name }}</h1>
             <div class="product-section-subtitle">{{ $product->details }}</div>
@@ -31,7 +41,7 @@
                 {!! $product->description !!}
             </p>
             <p>&nbsp;</p>
-{{--            <a href="" class="button">カートに入れる</a>--}}
+            {{--            <a href="" class="button">カートに入れる</a>--}}
             <form action="{{ route('cart.store') }}" method="POST">
                 @csrf
                 <input type="hidden" name="id" value="{{$product->id}}">

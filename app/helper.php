@@ -11,3 +11,10 @@ function getTax($price){
 function setActiveCategory($category){
     return $category == request()->category ? 'active':'';
 }
+
+//imageが見つからない時はデフォルトイメージを返す
+function productImage($image_path){
+    return $image_path != null && file_exists('storage/'.$image_path)
+        ?asset('storage/'.$image_path)
+        :asset('img/not-found.png');
+}

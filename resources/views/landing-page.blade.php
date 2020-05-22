@@ -49,8 +49,12 @@
                 <div class="products text-center">
                     @foreach($products as $product)
                     <div class="product">
-                        <a href="{{route('shop.show',$product->slug)}}"><img src={{asset('img/products/'.$product->slug.'.jpg')}} alt="product"></a>
-                        <a href="{{route('shop.show',$product->slug)}}"><div class="product-name">{{ $product->name }}</div></a>
+                        <a href="{{route('shop.show',$product->slug)}}">
+                            <img src="{{ asset('storage/'.$product->image) }}" alt="product">
+                        </a>
+                        <a href="{{route('shop.show',$product->slug)}}">
+                            <div class="product-name">{{ $product->name }}</div>
+                        </a>
                         <div class="product-price">{{$product->presentPrice()}}</div>
                     </div>
                     @endforeach
@@ -90,13 +94,7 @@
         <footer>
             <div class="footer-content container">
                 <div class="made-with">Made With <i class="fa fa-heart"></i> by me</div>
-                <ul>
-                    <li>Follow me</li>
-                    <li><a href="#"><i class="fa fa-globe"></i></a></li>
-                    <li><a href="#"><i class="fab fa-youtube"></i></a></li>
-                    <li><a href="#"><i class="fab fa-github"></i></a></li>
-                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                </ul>
+                {{ menu('footer_menu','component.menu.footer_menu') }}
             </div>
         </footer>
     </body>

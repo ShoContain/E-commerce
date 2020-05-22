@@ -48,7 +48,7 @@
                 <div class="cart-table-row">
                     <div class="cart-table-left">
                         <a href="{{ route('shop.show',$cartItem->model->slug) }}">
-                            <img src="{{asset('/img/products/'.$cartItem->model->slug.'.jpg')}}" alt="" class="cart-table-img">
+                            <img src="{{ asset('storage/'.$cartItem->model->image) }}" alt="product" class="cart-table-img">
                         </a>
                         <div class="cart-item-details">
                             <div class="cart-item-name">

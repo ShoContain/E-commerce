@@ -94,7 +94,7 @@
                     @foreach(Cart::getContent() as $item)
                     <div class="checkout-table-row">
                         <div class="checkout-table-left">
-                            <img src="{{ asset('img/products/'.$item->model->slug.'.jpg') }}" alt="" class="checkout-table-image">
+                            <img src="{{ asset('storage/'.$item->model->image) }}" alt="product" class="checkout-table-image">
                             <div class="checkout-item-details">
                                 <div class="checkout-table-name">{{ $item->model->name }}</div>
                                 <div class="checkout-table-detail">{{ $item->model->details }}</div>
