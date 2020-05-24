@@ -21,13 +21,15 @@
     <div class="product-section container">
         <div>
             <div class="product-section-image">
-                <img src="{{ productImage($product->image) }}" alt="product">
+                <img src="{{ productImage($product->image) }}" alt="product" id="currentImage" class="active">
             </div>
             @if($product->images)
-                <div>
-                {{--(array)キャストしてもエラーが出たので、decodeしてforeachで回す--}}
+                <div class="product-section-multiple-images">
+                    {{--(array)キャストしてもエラーが出たので、decodeしてforeachで回す--}}
                     @foreach(json_decode($product->images,true ) as $image)
-                        <img src="{{ productImage($image) }}" alt="product">
+                        <div class="product-section-multiple-thumbnails {{ $loop->first==true ? "selected":""}}">
+                            <img src="{{ productImage($image) }}" alt="product">
+                        </div>
                     @endforeach
                 </div>
             @endif
@@ -54,4 +56,27 @@
 
     @include('component.might-like')
 
+@endsection
+
+@section('extra-js')
+    <script>
+        (function () {
+            const currentImage = document.querySelector('#currentImage');
+            const images = document.querySelectorAll('.product-section-multiple-thumbnails');
+
+            images.forEach((element)=>element.addEventListener('click',thumbnailClick));
+
+            function thumbnailClick(e) {
+                currentImage.classList.remove('active');
+
+                currentImage.addEventListener('transitionend',()=>{
+                    currentImage.src = this.querySelector('img').src;
+                    currentImage.classList.add('active');
+                });
+
+                images.forEach((element)=>element.classList.remove('selected'));
+                this.classList.add('selected');
+            }
+        }());
+    </script>
 @endsection

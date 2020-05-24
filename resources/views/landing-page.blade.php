@@ -17,8 +17,13 @@
     <body>
         <header class="with-background">
             <div class="top-nav container">
-                <div class="logo">Laravel-E-COMMERCE</div>
-                {{ menu('header_menu','component.menu.header_menu') }}
+                <div class="top-nav-left">
+                    <div class="logo">E-COMMERCE</div>
+                    {{ menu('header_menu','component.menu.header_menu') }}
+                </div>
+                <div class="top-nav-right">
+                    @include('component.menu.top-nav-right')
+                </div>
             </div> {{--end of top-nav--}}
 
             <div class="hero container">
@@ -39,7 +44,7 @@
 
         <div class="featured-section">
             <div class="container">
-                    <h1 class="text-center">Laravel Ecommerce</h1>
+                    <h1 class="text-center">Ecommerce</h1>
                     <p class="section-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam asperiores autem dolorem ducimus est id nesciunt optio pariatur perferendis, soluta!</p>
                 <div class="text-center button-container">
                         <a href="#" class="button">機能</a>

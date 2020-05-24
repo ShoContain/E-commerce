@@ -26,7 +26,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -37,4 +37,22 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    /**
+     * Show the application's login form.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function showLoginForm()
+    {
+        session()->put('previous_url',url()->previous());
+        return view('auth.login');
+    }
+
+    public function redirectTo()
+    {
+        //session()->get() previous_url無かったら、'/'を取得
+       return str_replace(url('/'),'',session()->get('previous_url','/'));
+    }
+
 }

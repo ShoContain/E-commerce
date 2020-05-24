@@ -3,29 +3,12 @@ header.with-background{
     background-size: cover;
     color: white;
 
-    .top-nav{
-        display: flex;
-        justify-content: space-between;
-        padding: 48px 0;
-
-        .logo{
-            font-weight: bold;
-            font-size: 24px;
-        }
-        ul{
-            display: flex;
-            list-style: none;
-            text-transform: uppercase;
-            justify-content: space-between;
-            width: 40%;
-            a{
-                color: $white;
-                &:hover{
-                    color:darken($white,20%)
-                }
-            }
-        }
+    .logo {
+        font-weight: bold;
+        font-size: 28px;
+        padding-top: 10px;
     }
+
     .hero{
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -56,8 +39,10 @@ header{
         padding: 48px 0;
 
         .logo{
+            padding-top: 10px;
             font-weight: bold;
-            font-size: 24px;
+            font-size: 28px;
+            margin-right: 20px;
             a{
                 color: $white;
                 &:hover{
@@ -68,9 +53,15 @@ header{
         ul{
             display: flex;
             list-style: none;
-            justify-content: space-between;
+            //justify-content: space-between;
+            //width: 40%;
             text-transform: uppercase;
-            width: 40%;
+            li{
+                margin-right: 38px;
+                &:last-child{
+                    margin-right: 0;
+                }
+            }
             a{
                 color: $white;
                 &:hover{
@@ -93,4 +84,14 @@ header{
             }
         }
     }
+    .top-nav-left{
+        display: flex;
+    }
+
+    .top-nav-right{
+        display: flex;
+        align-items: center;
+    }
 }
+
+

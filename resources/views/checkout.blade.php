@@ -36,7 +36,7 @@
                 <h2>お支払い情報</h2>
                 <div class="form-group">
                     <label for="email">メールアドレス</label>
-                    <input type="email" class="form-control" id="email" name="email" value="{{old('email')}}"  required>
+                    <input type="email" class="form-control" id="email" name="email" value="{{auth()->user()->email}}"  readonly>
                 </div>
                 <div class="form-group">
                     <label for="name">名前</label>

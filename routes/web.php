@@ -30,7 +30,7 @@ Route::delete ('/wishList/{id}','WishListController@destroy')->name('wishlist.de
 Route::post ('/wishList/switchToCart/{id}','WishListController@switchToCart')->name('wishlist.switchToCart');
 
 //チエックアウト
-Route::get('/checkout','CheckOutController@index')->name('checkout.index');
+Route::get('/checkout','CheckOutController@index')->name('checkout.index')->middleware('auth');
 Route::post('/checkout','CheckOutController@store')->name('checkout.store');
 
 //クーポン
