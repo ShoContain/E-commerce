@@ -23,8 +23,9 @@ class CheckoutRequest extends FormRequest
      */
     public function rules()
     {
+        $uniqueEmail = auth()->user()?'required|email':'required|email|unique:users';
         return [
-            'email'=>'required|email',
+            'email'=>$uniqueEmail,
             'name'=>'required',
             'address'=>'required',
             'city'=>'required',
@@ -33,4 +34,12 @@ class CheckoutRequest extends FormRequest
             'phone'=>'required',
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'email.unique'=>"既に同じメールアドレスで登録されています<a href='/login'>ログイン</a>をしてから続行してください"
+        ];
+    }
+
 }

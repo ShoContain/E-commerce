@@ -6,8 +6,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CheckoutRequest;
 use Cartalyst\Stripe\Exception\CardErrorException;
 use Cartalyst\Stripe\Laravel\Facades\Stripe;
-use Darryldecode\Cart\Cart;
-use Illuminate\Http\Request;
+
 
 class CheckOutController extends Controller
 {
@@ -21,6 +20,13 @@ class CheckOutController extends Controller
      */
     public function index()
     {
+        if(\Cart::getTotal()==0){
+            return redirect()->route('shop.index');
+        }
+        if(auth()->user() && request()->is('guestCheckout')){
+            return redirect()->route('checkout.index');
+        }
+
         $discount = $this->getNumbers()->get('discount');
         $newSubTotal = $this->getNumbers()->get('newSubTotal');
         $newTax = $this->getNumbers()->get('newTax');

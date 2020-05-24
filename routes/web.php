@@ -33,6 +33,10 @@ Route::post ('/wishList/switchToCart/{id}','WishListController@switchToCart')->n
 Route::get('/checkout','CheckOutController@index')->name('checkout.index')->middleware('auth');
 Route::post('/checkout','CheckOutController@store')->name('checkout.store');
 
+//登録なしでのチエックアウト
+Route::get('/guestCheckout','CheckOutController@index')->name('guestCheckout.index');
+
+
 //クーポン
 Route::post('/coupon','CouponController@confirm')->name('coupon.confirm');
 Route::delete('/coupon','CouponController@destroy')->name('coupon.destroy');
