@@ -139,7 +139,7 @@ class CartController extends Controller
         ));
         \Cart::condition($saleCondition);
         app('wishList')->add($item->id,$item->name,$item->price,1)->associate('App\Product');
-        return redirect()->route('cart.index')->with('success_message',' 商品をウイッシュリスト入れました！');
+        return redirect()->route('cart.index')->with('success_message',' 商品を欲しい物リスト入れました！');
 
     }
 }
