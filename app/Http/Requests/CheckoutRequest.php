@@ -30,7 +30,7 @@ class CheckoutRequest extends FormRequest
             'address'=>'required',
             'city'=>'required',
             'prefecture'=>'required',
-            'postal-code'=>'required',
+            'postal_code'=>'required',
             'phone'=>'required',
         ];
     }

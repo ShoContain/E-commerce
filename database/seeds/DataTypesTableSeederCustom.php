@@ -21,7 +21,7 @@ class DataTypesTableSeederCustom extends Seeder
                 'icon'                  => 'voyager-bag',
                 'model_name'            => 'App\Product',
                 'policy_name'           => 'null',
-                'controller'            => '\App\Http\Controllers\Voyager\ProductsController',
+                'controller'            => 'App\Http\Controllers\Voyager\ProductsController',
                 'generate_permissions'  => 1,
                 'description'           => '',
                 'server_side'           =>1,

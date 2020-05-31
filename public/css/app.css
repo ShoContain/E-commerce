@@ -318,7 +318,7 @@ form .form-group input {
 }
 
 footer {
-  background: #535353;
+  background: #7e6698;
   color: lightgray;
   padding: 40px;
 }
@@ -348,7 +348,7 @@ footer .footer-content .fa-heart {
 }
 
 header.with-background {
-  background: url("/img/triangles.svg");
+  background: url("/img/simple-background-image.jpg");
   background-size: cover;
   color: white;
 }
@@ -385,7 +385,7 @@ header.with-background .hero .button {
 }
 
 header {
-  background: #535353;
+  background: #7e6698;
 }
 
 header .top-nav {

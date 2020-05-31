@@ -17,8 +17,8 @@
     <body>
         <header class="with-background">
             <div class="top-nav container">
+                <div class="logo">E-COMMERCE</div>
                 <div class="top-nav-left">
-                    <div class="logo">E-COMMERCE</div>
                     {{ menu('header_menu','component.menu.header_menu') }}
                 </div>
                 <div class="top-nav-right">

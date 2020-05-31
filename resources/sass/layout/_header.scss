@@ -1,5 +1,5 @@
 header.with-background{
-    background: url("/img/triangles.svg");
+    background: url("/img/simple-background-image.jpg");
     background-size: cover;
     color: white;
 
@@ -32,7 +32,7 @@ header.with-background{
 }
 
 header{
-    background: $gray-background;
+    background: $purple-background;
     .top-nav{
         display: flex;
         justify-content: space-between;

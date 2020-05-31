@@ -74,9 +74,9 @@
 
                     <div class="half-form">
                         <div class="form-group">
-                            <label for="postal-code">郵便番号</label>
-                            <input type="text" class="form-control" id="postal-code" name="postal-code"
-                                   value="{{old('postal-code')}}" required>
+                            <label for="postal_code">郵便番号</label>
+                            <input type="text" class="form-control" id="postal_code" name="postal_code"
+                                   value="{{old('postal_code')}}" required>
                         </div>
                         <div class="form-group">
                             <label for="phone">電話番号</label>
@@ -236,7 +236,7 @@
                 address_line1: document.getElementById('address').value,
                 address_city: document.getElementById('city').value,
                 address_state: document.getElementById('prefecture').value,
-                address_zip: document.getElementById('postal-code').value,
+                address_zip: document.getElementById('postal_code').value,
             }
             stripe.createToken(card, options).then(function (result) {
                 if (result.error) {
