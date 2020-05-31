@@ -28,8 +28,8 @@
 
             <div class="hero container">
                 <div class="hero-copy">
-                    <h1>CSS Grid Example</h1>
-                    <p>A practical example of using CSS Grid</p>
+                    <h1>ショップサイト</h1>
+                    <p>豊富な商品をご準備しております</p>
                     <div class="hero-buttons">
                         <a href="#" class="button button-white">Button 1</a>
                         <a href="#" class="button button-white">Button 2</a>
@@ -45,7 +45,7 @@
         <div class="featured-section">
             <div class="container">
                     <h1 class="text-center">Ecommerce</h1>
-                    <p class="section-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam asperiores autem dolorem ducimus est id nesciunt optio pariatur perferendis, soluta!</p>
+                    <p class="section-description">さあ、買い物を始めましょう！</p>
                 <div class="text-center button-container">
                         <a href="#" class="button">機能</a>
                         <a href="#" class="button">セール</a>
