@@ -20,6 +20,8 @@ class ProductsTableSeeder extends Seeder
                 'details'=>['13','14','15'][array_rand(array('13','14','15'))].'inch,1TB SSD,32GB RAM',
                 'price'=>rand(149999,249999),
                 'featured'=>rand(0,1),
+                'image'=>'products/dummy/laptop-'.$i.'.jpg',
+                'images'=>'["products\/dummy\/laptop-2.jpg","products\/dummy\/laptop-3.jpg","products\/dummy\/laptop-4.jpg"]',
                 'description'=>'Lorem ipsum'.$i.'dolor sit amet, consectetur adipisicing elit. Ab aliquid corporis eos fugiat, itaque nulla quas. Autem nam non sint?'
             ])->categories()->attach(1);
         }
@@ -34,6 +36,8 @@ class ProductsTableSeeder extends Seeder
                 'details'=>['24','27','32'][array_rand(array('24','27','32'))].'inch,1TB SSD,32GB RAM',
                 'price'=>rand(249999,449999),
                 'featured'=>rand(0,1),
+                'image'=>'products/dummy/desktop-'.$i.'.jpg',
+                'images'=>'["products\/dummy\/desktop-2.jpg","products\/dummy\/desktop-3.jpg","products\/dummy\/desktop-4.jpg"]',
                 'description'=>'Lorem ipsum'.$i.'dolor sit amet, consectetur adipisicing elit. Ab aliquid corporis eos fugiat, itaque nulla quas. Autem nam non sint?'
             ])->categories()->attach(2);
         }
@@ -46,6 +50,8 @@ class ProductsTableSeeder extends Seeder
                 'featured'=>rand(0,1),
                 'details'=>['16','32','64'][array_rand(['16','32','64'])].'GB'.['7','8','9'][array_rand(array('7','8','9'))].'inch,RAM',
                 'price'=>rand(50000,80000),
+                'image'=>'products/dummy/tablet-'.$i.'.jpg',
+                'images'=>'["products\/dummy\/tablet-2.jpg","products\/dummy\/tablet-3.jpg","products\/dummy\/tablet-4.jpg"]',
                 'description'=>'Lorem ipsum'.$i.'dolor sit amet, consectetur adipisicing elit. Ab aliquid corporis eos fugiat, itaque nulla quas. Autem nam non sint?'
             ])->categories()->attach(3);
         }
@@ -58,6 +64,8 @@ class ProductsTableSeeder extends Seeder
                 'details'=>['16','32','64'][array_rand(['16','32','64'])].'GB'.['7','8','9'][array_rand(array('7','8','9'))].'inch,RAM',
                 'price'=>rand(15000,20000),
                 'featured'=>rand(0,1),
+                'image'=>'products/dummy/phone-'.$i.'.jpg',
+                'images'=>'["products\/dummy\/phone-2.jpg","products\/dummy\/phone-3.jpg","products\/dummy\/phone-4.jpg"]',
                 'description'=>'Lorem ipsum'.$i.'dolor sit amet, consectetur adipisicing elit. Ab aliquid corporis eos fugiat, itaque nulla quas. Autem nam non sint?'
             ])->categories()->attach(4);
         }
@@ -70,6 +78,8 @@ class ProductsTableSeeder extends Seeder
                 'details'=>'Lorem10 losod dkdkedkf',
                 'price'=>rand(1800,10000),
                 'featured'=>rand(0,1),
+                'image'=>'products/dummy/appliance-'.$i.'.jpg',
+                'images'=>'["products\/dummy\/appliance-2.jpg","products\/dummy\/appliance-3.jpg","products\/dummy\/appliance-4.jpg"]',
                 'description'=>'Lorem ipsum'.$i.'dolor sit amet, consectetur adipisicing elit. Ab aliquid corporis eos fugiat, itaque nulla quas. Autem nam non sint?'
             ])->categories()->attach(5);
         }
@@ -82,6 +92,8 @@ class ProductsTableSeeder extends Seeder
                 'details'=>['32','40','50'][array_rand(array('32','40','50'))].'インチ',
                 'price'=>rand(1800,10000),
                 'featured'=>rand(0,1),
+                'image'=>'products/dummy/tv-'.$i.'.jpg',
+                'images'=>'["products\/dummy\/tv-2.jpg","products\/dummy\/tv-3.jpg","products\/dummy\/tv-4.jpg"]',
                 'description'=>'Lorem ipsum'.$i.'dolor sit amet, consectetur adipisicing elit. Ab aliquid corporis eos fugiat, itaque nulla quas. Autem nam non sint?'
             ])->categories()->attach(6);
         }
@@ -94,6 +106,8 @@ class ProductsTableSeeder extends Seeder
                 'details'=>['32','40','50'][array_rand(array('32','40','50'))].'インチ',
                 'price'=>rand(1800,10000),
                 'featured'=>rand(0,1),
+                'image'=>'products/dummy/camera-'.$i.'.jpg',
+                'images'=>'["products\/dummy\/camera-2.jpg","products\/dummy\/camera-3.jpg","products\/dummy\/camera-4.jpg"]',
                 'description'=>'Lorem ipsum'.$i.'dolor sit amet, consectetur adipisicing elit. Ab aliquid corporis eos fugiat, itaque nulla quas. Autem nam non sint?'
             ])->categories()->attach(7);
         }
