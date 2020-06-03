@@ -97,6 +97,7 @@ h2 {
 
 .button {
   border: 1px solid #212121;
+  border-radius: 5%;
   padding: 12px 30px;
   color: #212121;
 }
@@ -865,5 +866,64 @@ header .top-nav-right {
 
 .thank-you-section div .thank-you-to-home {
   display: inline-block;
+}
+
+.login-title {
+  text-align: center;
+}
+
+.login-textbox {
+  position: relative;
+  display: block;
+  width: 500px;
+  margin-top: 50px;
+  padding: 15px;
+  border: 1px solid #a0a0a0;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #a0a0a0;
+  outline: none;
+}
+
+.login-label {
+  position: absolute;
+  top: 15px;
+  left: 10px;
+  font-size: 16px;
+  color: #a0a0a0;
+  transition: all 0.25s ease;
+}
+
+.login-label.focus {
+  top: -25px;
+  left: 5px;
+  font-size: 14px;
+  color: #a0a0a0;
+}
+
+.login-wrap {
+  position: relative;
+  width: 500px;
+  margin: 30px auto;
+}
+
+.remember-me-box {
+  margin: 30px auto;
+  width: 300px;
+}
+
+.remember-me-box span {
+  color: slategray;
+  font-size: medium;
+}
+
+.login-button-section {
+  margin: 30px auto;
+  width: 200px;
+}
+
+.login-options-section {
+  margin: 10px auto;
+  width: 400px;
 }
 

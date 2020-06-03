@@ -45,7 +45,6 @@
         <div class="featured-section">
             <div class="container">
                     <h1 class="text-center">Ecommerce</h1>
-                    <p class="section-description">さあ、買い物を始めましょう！</p>
                 <div class="text-center button-container">
                         <a href="#" class="button">機能</a>
                         <a href="#" class="button">セール</a>
