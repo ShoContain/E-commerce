@@ -856,6 +856,11 @@ header .top-nav-right {
   border: 1px solid #e5e8e6;
 }
 
+.checkout-section .checkout-testmode-description {
+  display: block;
+  font-size: small;
+}
+
 .thank-you-section {
   text-align: center;
 }

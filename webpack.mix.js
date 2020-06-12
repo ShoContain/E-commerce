@@ -17,7 +17,7 @@ mix.js('resources/js/app.js', 'public/js')
     .browserSync({
         files:[
             "resources/views/**/*.blade.php",
-            "public/**/*.*"
+            "public/**/*.*",
         ],
         proxy:{
             target:"http://nginx"

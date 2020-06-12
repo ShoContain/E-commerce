@@ -4,10 +4,14 @@ namespace App\Http\Controllers;
 
 
 use App\Http\Requests\CheckoutRequest;
+use App\Jobs\SendOrderPlacedEmail;
+use App\Mail\OrderPlaced;
 use App\Order;
 use App\OrderProduct;
 use Cartalyst\Stripe\Exception\CardErrorException;
 use Cartalyst\Stripe\Laravel\Facades\Stripe;
+use Darryldecode\Cart\Cart;
+use Illuminate\Support\Facades\Mail;
 
 
 class CheckOutController extends Controller
@@ -63,33 +67,11 @@ class CheckOutController extends Controller
                 ],
             ]);
 
-            //Order Tableに情報を追加
-            $order = Order::create([
-                'user_id'=>auth()->user()->id ??null,
-                'billing_email'=>$request->email,
-                'billing_name'=>$request->name,
-                'billing_address'=>$request->address,
-                'billing_city'=>$request->city,
-                'billing_prefecture'=>$request->prefecture,
-                'billing_postalcode'=>$request->postal_code,
-                'billing_phone'=>$request->phone,
-                'billing_name_on_card'=>$request->name_on_card,
-                'billing_discount'=>$this->getNumbers()->get('discount'),
-                'billing_discount_code'=>$this->getNumbers()->get('codeName'),
-                'billing_subtotal'=>$this->getNumbers()->get('newSubTotal'),
-                'billing_tax'=>$this->getNumbers()->get('newTax'),
-                'billing_total'=>$this->getNumbers()->get('newTotal'),
-                'error'=>null,
-            ]);
+            $order=$this->addToOrdersTable($request,null);
 
-            //Order_Product Tableに情報を追加
-            foreach (\Cart::getContent() as $item) {
-                OrderProduct::create([
-                    'order_id'=>$order->id,
-                    'product_id'=>$item->model->id,
-                    'quantity'=>$item['quantity'],
-                ]);
-            }
+            //Mail::send(new OrderPlaced($order));
+            //キューを使用,ジョブの実行はConfirmationController内で
+            SendOrderPlacedEmail::dispatch($order);
 
             \Cart::clear();
             session()->forget('coupon');
@@ -97,8 +79,40 @@ class CheckOutController extends Controller
             return redirect('/thankyou')
                 ->with('thankyou_message', 'お支払いありがとうございます、間も無くお支払い確認メールをお届けします');
         } catch (CardErrorException $e) {
+            $this->addToOrdersTable($request,$e->getMessage());
             return back()->withErrors('エラー: ' . $e->getMessage());
         }
+    }
+
+    protected function addToOrdersTable($request,$error){
+        //Order Tableに情報を追加
+        $order = Order::create([
+            'user_id'=>auth()->user()->id ??null,
+            'billing_email'=>$request->email,
+            'billing_name'=>$request->name,
+            'billing_address'=>$request->address,
+            'billing_city'=>$request->city,
+            'billing_prefecture'=>$request->prefecture,
+            'billing_postalcode'=>$request->postal_code,
+            'billing_phone'=>$request->phone,
+            'billing_name_on_card'=>$request->name_on_card,
+            'billing_discount'=>$this->getNumbers()->get('discount'),
+            'billing_discount_code'=>$this->getNumbers()->get('codeName'),
+            'billing_subtotal'=>$this->getNumbers()->get('newSubTotal'),
+            'billing_tax'=>$this->getNumbers()->get('newTax'),
+            'billing_total'=>$this->getNumbers()->get('newTotal'),
+            'error'=>$error,
+        ]);
+
+        //Order_Product Tableに情報を追加
+        foreach (\Cart::getContent() as $item) {
+            OrderProduct::create([
+                'order_id'=>$order->id,
+                'product_id'=>$item->model->id,
+                'quantity'=>$item['quantity'],
+            ]);
+        }
+        return $order;
     }
 
     public function getNumbers()

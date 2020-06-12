@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
+
 
 class ConfirmationController extends Controller
 {
@@ -17,6 +19,7 @@ class ConfirmationController extends Controller
         return redirect('/');
     }
         return view('thankyou');
+
     }
 
 

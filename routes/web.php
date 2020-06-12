@@ -44,6 +44,11 @@ Route::delete('/coupon','CouponController@destroy')->name('coupon.destroy');
 //Thank youページ
 Route::get('/thankyou','ConfirmationController@index')->name('confirmation.index');
 
+//マークダウンしたメールをみる
+Route::get('/mailable',function(){
+    $order = \App\Order::find(1);
+    return new \App\Mail\OrderPlaced($order);
+});
 
 Auth::routes();
 

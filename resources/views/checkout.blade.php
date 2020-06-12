@@ -99,6 +99,10 @@
                         <!-- Element のエラーを入れる。 -->
                         <div id="card-errors" role="alert"></div>
                     </div>
+                    <span class="checkout-testmode-description">
+                        ※テスト用のサイトなので料金は請求されません
+                        支払いをテストするには42を続けて入力ください
+                    </span>
 
                     <button type="submit" class="button-primary full-width" id="complete-order">支払いを完了する</button>
                 </form>
@@ -181,7 +185,7 @@
 @section('extra-js')
     <script>
         // Create a Stripe client.
-        var stripe = Stripe(" {{config('services.stripe.key')}} ");
+        var stripe = Stripe("{{config('services.stripe.key')}}");
 
         // Create an instance of Elements.
         var elements = stripe.elements();
