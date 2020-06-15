@@ -13,11 +13,12 @@
         "darryldecode/cart": "^4.1",
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^1.0",
-        "guzzlehttp/guzzle": "^6.3",
+        "guzzlehttp/guzzle": "^6.5",
         "laravel/framework": "^7.0",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.0",
         "melihovv/laravel-shopping-cart": "^7.0",
+        "nicolaslopezj/searchable": "^1.13",
         "tcg/voyager": "^1.4"
     },
     "require-dev": {

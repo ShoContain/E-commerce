@@ -6,4 +6,9 @@
         color:lightslategrey;
         font-size: 14px;
     }
+    .breadcrumb-container{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
 }

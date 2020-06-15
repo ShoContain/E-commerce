@@ -162,6 +162,7 @@ return [
         'prefecture'=>'都道府県',
         'postal-code'=>'郵便番号',
         'phone'=>'電話番号',
+        'query'=>'検索'
     ],
 
 ];

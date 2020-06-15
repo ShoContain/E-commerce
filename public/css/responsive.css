@@ -149,6 +149,10 @@
   .cart-section .cart-total .cart-total-right {
     width: 100%;
   }
+
+  .breadcrumb .breadcrumb-container {
+    display: block;
+  }
 }
 
 /* Extra Small Devices, Phones */

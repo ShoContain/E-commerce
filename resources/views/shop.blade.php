@@ -8,14 +8,12 @@
 
 @section('content')
 
+    @component('component.breadcrumb')
     <!--パンくずリスト（ホーム > メニュー > 商品）-->
-    <div class="breadcrumb">
-        <div class="container">
             <a href="/">Home</a>
             <i class="fa fa-chevron-right breadcrumb-separator"></i>
             <span>Shop</span>
-        </div>
-    </div>  {{--end of breadcrumb--}}
+    @endcomponent
 
     <div class="products-section container">
         <div class="sidebar">

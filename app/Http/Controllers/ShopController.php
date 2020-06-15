@@ -49,5 +49,21 @@ class ShopController extends Controller
         return view('product',compact('product','mightLikes'));
     }
 
+    public function search(Request $request)
+    {
+        $request->validate([
+            'query'=>'required|min:3',
+        ]);
+        $query = $request->input('query');
 
+        //Searchableパッケージで全文検索をかける
+        $products = Product::search($query)->paginate(9);
+//        name,details,descriptionのどれかを検索対象
+//        $products = Product::where('name','like',"%$query%")
+//            ->orWhere('details','like',"%$query%")
+//            ->orWhere('description','like',"%$query%")
+//            ->paginate(9);
+
+        return view('search-result',compact('products'));
+    }
 }

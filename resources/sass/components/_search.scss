@@ -1,0 +1,18 @@
+.search-icon{
+    color: gray;
+    position: relative;
+    left: 20px;
+    height: 10px;
+}
+
+.search-box{
+    padding: 12px 20px;
+    width: 400px;
+    max-width: 100%;
+    font-size: 12px;
+}
+
+.search-span{
+    color: $text-color-light;
+    font-size: 17px;
+}

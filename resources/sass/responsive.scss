@@ -124,9 +124,17 @@
             }
         }
     }
+    .breadcrumb {
+        .breadcrumb-container {
+            display: block;
+        }
+    }
 }
 
 /* Extra Small Devices, Phones */
+@media only screen and (max-width : 570px) {
+
+}
 
 /* Custom, iPhone Retina */
 

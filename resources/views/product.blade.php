@@ -7,16 +7,15 @@
 @endsection
 
 @section('content')
-    <!--パンくずリスト（ホーム > メニュー > 商品）-->
-    <div class="breadcrumb">
-        <div class="container">
-            <a href="/">Home</a>
-            <i class="fa fa-chevron-right breadcrumb-separator"></i>
-            <a href="{{ route('shop.index') }}">Shop</a>
-            <i class="fa fa-chevron-right breadcrumb-separator"></i>
-            <span>MacBook Pro</span>
-        </div>
-    </div>  {{--end of breadcrumb--}}
+
+    @component('component.breadcrumb')
+        <!--パンくずリスト（ホーム > メニュー > 商品）-->
+        <a href="/">Home</a>
+        <i class="fa fa-chevron-right breadcrumb-separator"></i>
+        <a href="{{ route('shop.index') }}">Shop</a>
+        <i class="fa fa-chevron-right breadcrumb-separator"></i>
+        <span>MacBook Pro</span>
+    @endcomponent
 
     <div class="product-section container">
         <div>
