@@ -166,7 +166,7 @@ h2 {
   font-size: 14px;
 }
 
-.breadcrumb .breadcrumb-container {
+.breadcrumb-container {
   display: flex;
   justify-content: space-between;
   align-items: center;

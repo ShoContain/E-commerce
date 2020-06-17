@@ -124,16 +124,13 @@
             }
         }
     }
-    .breadcrumb {
-        .breadcrumb-container {
-            display: block;
-        }
-    }
 }
 
 /* Extra Small Devices, Phones */
 @media only screen and (max-width : 570px) {
-
+    .breadcrumb-container {
+        display: block;
+    }
 }
 
 /* Custom, iPhone Retina */
