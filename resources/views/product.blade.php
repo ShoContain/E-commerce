@@ -3,7 +3,7 @@
 @section('title',$product->name)
 
 @section('extra-css')
-
+    <link rel="stylesheet" href="{{asset('css/algolia.css')}}">
 @endsection
 
 @section('content')
@@ -14,7 +14,7 @@
         <i class="fa fa-chevron-right breadcrumb-separator"></i>
         <a href="{{ route('shop.index') }}">Shop</a>
         <i class="fa fa-chevron-right breadcrumb-separator"></i>
-        <span>MacBook Pro</span>
+        <span>{{$product->name}}</span>
     @endcomponent
 
     <div class="product-section container">
@@ -57,7 +57,13 @@
 
 @endsection
 
+
 @section('extra-js')
+    <script src="https://cdn.jsdelivr.net/npm/algoliasearch@3/dist/algoliasearchLite.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
+    //publicフォルダに記述
+    <script src="{{ asset('js/algolia.js') }}"></script>
+
     <script>
         (function () {
             const currentImage = document.querySelector('#currentImage');

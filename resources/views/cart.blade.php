@@ -3,17 +3,17 @@
 @section('title','Cart')
 
 @section('extra-css')
-
+    <link rel="stylesheet" href="{{asset('css/algolia.css')}}">
 @endsection
 
 @section('content')
-    <div class="breadcrumb">
-        <div class="container">
-            <a href="/">Home</a>
-            <i class="fa fa-chevron-right breadcrumb-separator"></i>
-            <span>Cart</span>
-        </div>
-    </div>  {{--end of breadcrumb--}}
+
+    @component('component.breadcrumb')
+        <!--パンくずリスト（ホーム > メニュー > 商品）-->
+        <a href="/">Home</a>
+        <i class="fa fa-chevron-right breadcrumb-separator"></i>
+        <span>Cart</span>
+    @endcomponent
 
     <div class="cart-section container">
         <div>
@@ -175,6 +175,11 @@
 @endsection
 
 @section('extra-js')
+    <script src="https://cdn.jsdelivr.net/npm/algoliasearch@3/dist/algoliasearchLite.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
+    //publicフォルダに記述
+    <script src="{{ asset('js/algolia.js') }}"></script>
+
     <script>
         (function() {
             const classname = document.querySelectorAll('.quantity')
@@ -200,3 +205,5 @@
         }());
     </script>
 @endsection
+
+

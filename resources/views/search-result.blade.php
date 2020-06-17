@@ -3,7 +3,7 @@
 @section('title','検索結果')
 
 @section('extra-css')
-
+    <link rel="stylesheet" href="{{asset('css/algolia.css')}}">
 @endsection
 
 @section('content')
@@ -60,5 +60,8 @@
 @endsection
 
 @section('extra-js')
-
+    <script src="https://cdn.jsdelivr.net/npm/algoliasearch@3/dist/algoliasearchLite.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
+    //publicフォルダに記述
+    <script src="{{ asset('js/algolia.js') }}"></script>
 @endsection
