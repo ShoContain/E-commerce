@@ -25,7 +25,7 @@
 }
 .aa-input-search:focus {
     outline: 0;
-    border-color: #3a96cf;
+    border-color: #74848e;
     box-shadow: 4px 4px 0 rgba(58, 150, 207, 0.1);
 }
 .aa-input-icon {
@@ -104,7 +104,7 @@
     padding: 6px 12px;
     text-align: left;
 }
-.aa-suggestion span:first-child em, .aa-suggestion span:last-child em {
+.aa-suggestion span em {
     font-weight: 700;
     font-style: normal;
     background-color: rgba(58, 150, 207, 0.1);
