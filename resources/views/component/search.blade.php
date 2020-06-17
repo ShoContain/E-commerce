@@ -1,3 +1,4 @@
+{{--Algolia使用--}}
 <div class="aa-input-container" id="aa-input-container">
     <input type="search" id="aa-search-input" class="aa-input-search" placeholder="商品を検索する" name="search" autocomplete="off" />
     <svg class="aa-input-icon" viewBox="654 -372 1664 1664">

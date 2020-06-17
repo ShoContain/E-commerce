@@ -156,6 +156,7 @@
 @media only screen and (max-width: 570px) {
   .breadcrumb-container {
     display: block;
+    text-align: center;
   }
 }
 
