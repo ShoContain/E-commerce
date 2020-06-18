@@ -10,7 +10,9 @@
                 header: '<div class="aa-suggestions-category">該当商品</div>',
                 suggestion(suggestion) {
                     const price = suggestion.price.toLocaleString()
-                    return `<span>${suggestion._highlightResult.name.value}</span><span>${price}円</span>`;
+                    return `<span>
+                        ${suggestion._highlightResult.name.value}</span>
+                        <span>${suggestion._highlightResult.details.value}</span><span>${price}円</span>`;
                 },
                 empty:function (result) {
                     return `${result.query}の検索結果が見つかりません`
