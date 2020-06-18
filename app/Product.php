@@ -9,6 +9,8 @@ class Product extends Model
 {
     use Searchable;
 
+    protected $guarded = [];
+
     public function presentPrice(){
         return number_format($this->price).'円';
     }
