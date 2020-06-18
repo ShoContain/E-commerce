@@ -73,7 +73,7 @@
                         </div>
 
                     <div class="cart-option">
-                        <select name="quantity" class="quantity" data-id="{{$cartItem->id}}">
+                        <select name="quantity" class="quantity" data-id="{{$cartItem->id}}" data-productQuantity="{{ $cartItem->model->quantity }}">
                             @for($i=1;$i<=4;$i++)
                                 <option {{ $cartItem->quantity===$i ? "selected":''}}>{{$i}}</option>
                             @endfor
@@ -148,14 +148,6 @@
                             </form>
                         </div>
 
-                        <div class="cart-option">
-                            <select name="quantity" id="" class="quantity">
-                                <option value="1" selected>1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                            </select>
-                        </div>
 
                         <div class="cart-table-price">{{ presentPrice($wishList->model->price) }}</div>
 
@@ -187,13 +179,14 @@
             Array.from(classname).forEach(function (element) {
                 element.addEventListener('change',function () {
                     const id = element.getAttribute('data-id');
+                    const productQuantity = element.getAttribute('data-productQuantity')
                     axios.patch(`/cart/${id}`,{
-                        quantity:this.value,
-
+                        quantity:this.value,　           //ドロップダウンで指定した数量
+                        productQuantity:productQuantity, //実際の数量
                     }).then(function (response) {
                         console.log(response);
                         //指定のURLを取得
-                        window.location.href=`{{route('cart.index')}}`
+                        {{--window.location.href=`{{route('cart.index')}}`--}}
 
                     }).catch(function (error) {
                         console.log(error);

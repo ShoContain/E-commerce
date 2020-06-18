@@ -60,3 +60,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
+
+//Cart全削除
+Route::get('/cart/all_delete',function (){
+    \Cart::clear();
+});

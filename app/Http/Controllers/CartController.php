@@ -92,12 +92,18 @@ class CartController extends Controller
     public function update(Request $request, $id)
     {
         $validation = Validator::make($request->all(),[
-            'quantity'=>'required|numeric|between:1,4',
+            'quantity'=>'required|numeric|between:1,4', //ドロップダウンで指定した数量
         ]);
         if($validation->fails()){
             session()->flash('errors',collect(['数量の変更に失敗しました']));
             return response()->json(['success'=>false],400);
         }
+        //欲しい数量より実際の在庫が少ない場合
+        if($request->quantity>$request->productQuantity){
+            session()->flash('errors',collect(['指定された数量の在庫がありません']));
+            return response()->json(['success'=>false],400);
+        }
+
         \Cart::update($id,array(
             'quantity'=>array(
                 'relative'=>false,

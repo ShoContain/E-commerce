@@ -36,13 +36,16 @@
 
         <div class="product-section-info">
             <h1 class="product-section-title">{{ $product->name }}</h1>
+            <span class="{{ $stock_tag }}">{{$stock_level}}</span>
             <div class="product-section-subtitle">{{ $product->details }}</div>
             <div class="product-section-price">{{ $product->presentPrice() }}</div>
             <p>
                 {!! $product->description !!}
             </p>
             <p>&nbsp;</p>
-            {{--            <a href="" class="button">カートに入れる</a>--}}
+
+            {{--在庫0ならhidden--}}
+            @if($product->quantity>0)
             <form action="{{ route('cart.store') }}" method="POST">
                 @csrf
                 <input type="hidden" name="id" value="{{$product->id}}">
@@ -50,6 +53,8 @@
                 <input type="hidden" name="price" value="{{$product->price}}">
                 <button class="button" type="submit">カートに入れる</button>
             </form>
+            @endif
+
         </div>
     </div> {{--end of product-section--}}
 

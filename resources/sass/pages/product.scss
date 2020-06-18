@@ -47,9 +47,11 @@
     color:$text-color-light;
 }
 .product-section-title{
+    display: inline-block;
     margin-bottom: 5px;
     font-weight: bold;
 }
+
 .product-section-price{
     font-size: 40px;
     font-weight: bold;
@@ -60,4 +62,21 @@
     p{
         margin-bottom: 16px;
     }
+}
+
+.stock_available{
+    color: green;
+    margin-left: 20px;
+}
+
+.stock_few_left{
+    color: #f1db82;
+    margin-left: 20px;
+
+}
+
+.stock_unavailable{
+    color: red;
+    margin-left: 20px;
+
 }

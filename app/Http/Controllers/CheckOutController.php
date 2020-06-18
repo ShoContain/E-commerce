@@ -8,6 +8,7 @@ use App\Jobs\SendOrderPlacedEmail;
 use App\Mail\OrderPlaced;
 use App\Order;
 use App\OrderProduct;
+use App\Product;
 use Cartalyst\Stripe\Exception\CardErrorException;
 use Cartalyst\Stripe\Laravel\Facades\Stripe;
 use Darryldecode\Cart\Cart;
@@ -73,6 +74,9 @@ class CheckOutController extends Controller
             //キューを使用,ジョブの実行はConfirmationController内で
             SendOrderPlacedEmail::dispatch($order);
 
+            //データベースより数量を引く
+            $this->decreaseQuantity();
+
             \Cart::clear();
             session()->forget('coupon');
             //支払い確認ページにリダイレクト
@@ -130,6 +134,16 @@ class CheckOutController extends Controller
             'newTotal' => $newTotal,
             'codeName'=>$codeName,
         ]);
+    }
+
+    protected function decreaseQuantity(){
+        foreach (\Cart::getContent() as $item) {
+            $product = Product::find($item->model->id);
+            //数量更新
+            $product->update([
+                'quantity'=>$product->quantity-$item['quantity'],
+            ]);
+        }
     }
 
 

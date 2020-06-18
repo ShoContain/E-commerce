@@ -44,9 +44,24 @@ class ShopController extends Controller
 
     public function show($slug)
     {
+
         $product = Product::where('slug',$slug)->firstOrFail();
         $mightLikes = Product::where('slug','!=',$slug)->mightAlsoLike()->get();
-        return view('product',compact('product','mightLikes'));
+
+        //在庫状態
+        $stock=$product->quantity;
+        if($stock>=5){
+            $stock_level='在庫あり';
+            $stock_tag = 'stock_available';
+        }elseif ($stock<5&&$stock>0){
+            $stock_level = '在庫 残り'.$stock.'点';
+            $stock_tag = 'stock_few_left';
+        }else{
+            $stock_level='在庫なし';
+            $stock_tag = 'stock_unavailable';
+        }
+
+        return view('product',compact('product','mightLikes','stock_level','stock_tag'));
     }
 
     public function search(Request $request)

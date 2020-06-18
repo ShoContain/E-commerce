@@ -590,6 +590,7 @@ header .top-nav-right {
 }
 
 .product-section-title {
+  display: inline-block;
   margin-bottom: 5px;
   font-weight: bold;
 }
@@ -606,6 +607,21 @@ header .top-nav-right {
 
 .product-section-info p {
   margin-bottom: 16px;
+}
+
+.stock_available {
+  color: green;
+  margin-left: 20px;
+}
+
+.stock_few_left {
+  color: #f1db82;
+  margin-left: 20px;
+}
+
+.stock_unavailable {
+  color: red;
+  margin-left: 20px;
 }
 
 .cart-section h2 {
