@@ -184,12 +184,10 @@
                         quantity:this.value,　           //ドロップダウンで指定した数量
                         productQuantity:productQuantity, //実際の数量
                     }).then(function (response) {
-                        console.log(response);
-                        //指定のURLを取得
-                        {{--window.location.href=`{{route('cart.index')}}`--}}
+                        //ページをリフレッシュ
+                        window.location.href=`{{route('cart.index')}}`
 
                     }).catch(function (error) {
-                        console.log(error);
                         window.location.href=`{{route('cart.index')}}`
                     })
                 })

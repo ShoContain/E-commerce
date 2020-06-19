@@ -50,6 +50,10 @@ class CheckOutController extends Controller
      */
     public function store(CheckoutRequest $request)
     {
+        if($this->CheckproductsStillInStock()){
+            return back()->withErrors('申し訳ありません、選択された商品の在庫がありません');
+        }
+
         $contents = \Cart::getContent()->map(function ($items) {
             return $items->model->slug . ',' . $items->quantity;
         })->values()->toJson();
@@ -146,5 +150,15 @@ class CheckOutController extends Controller
         }
     }
 
+    protected function CheckproductsStillInStock(){
+        foreach (\Cart::getContent() as $item) {
+            $product = Product::find($item->model->id);
+            //実際の在庫数と欲しい商品の在庫数を比較し、在庫がなければエラーメッセージ
+            if($product->quantity<$item['quantity']){
+                return true;
+            }
+        }
+        return false;
+}
 
 }

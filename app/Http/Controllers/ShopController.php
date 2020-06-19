@@ -57,7 +57,7 @@ class ShopController extends Controller
             $stock_level = '在庫 残り'.$stock.'点';
             $stock_tag = 'stock_few_left';
         }else{
-            $stock_level='在庫なし';
+            $stock_level='在庫がありません';
             $stock_tag = 'stock_unavailable';
         }
 
