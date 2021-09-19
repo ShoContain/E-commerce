@@ -60,7 +60,7 @@ class CheckOutController extends Controller
 
         try {
             $charge = Stripe::charges()->create([
-                'amount' => $this->getNumbers()->get('newTotal') / 100,
+                'amount' => $this->getNumbers()->get('newTotal'),
                 'currency' => 'jpy',
                 'source' => $request->stripeToken,
                 'description' => 'Chargeテスト',
