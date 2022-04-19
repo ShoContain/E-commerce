@@ -1,0 +1,119 @@
+.cart-section {
+    h2 {
+        margin: 30px 0;
+    }
+    .cart-table-row {
+        display: flex;
+        justify-content: space-between;
+        border-top: 1px solid $text-color-light;
+        padding: 14px 0;
+
+        &:last-child {
+            border-bottom: 1px solid $text-color-light;
+        }
+
+        .cart-table-left, .cart-table-right {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .cart-table-left {
+            width: 50%;
+        }
+
+        .cart-item-description {
+            color: $text-color-light;
+            font-weight: bolder;
+        }
+
+        .cart-item-details {
+            padding: 8px;
+        }
+
+        .cart-table-img {
+            max-height: 75px;
+        }
+
+        .cart-table-actions {
+            font-size: 15px;
+            text-align: left;
+            padding: 20px;
+            margin-right: 50px;
+        }
+
+        .cart-option {
+            padding-top: 35px;
+        }
+
+        .cart-table-price {
+            padding-top: 35px;
+            padding-left: 10px;
+        }
+        .cart-options{
+            border-style: none;
+            margin-bottom: 5px;
+            color: $text-color;
+            background: transparent;
+            padding: 0;
+            font-size: 14px;
+            &:hover{
+                color: lighten($text-color,30);
+            }
+        }
+    }
+
+    .cart-total {
+        margin: 30px 0;
+        padding: 20px;
+        display: flex;
+        justify-content: space-between;
+        background: $light-gray-background;
+
+        .cart-total-left {
+            width: 50%;
+            padding: 20px;
+        }
+
+        .cart-total-right {
+            display: flex;
+            justify-content: space-between;
+            width: 25%;
+            text-align: right;
+
+            .cart-totals-total {
+                font-weight: bold;
+                line-height: 2.5;
+                font-size: 20px;
+            }
+        }
+    }
+    .cart-buttons{
+        margin: 30px 0;
+        display: flex;
+        justify-content: space-between;
+    }
+    .empty-cart-alert{
+        display: flex;
+        justify-content: center;
+        margin: 30px 0;
+        color: lightslategrey;
+    }
+
+    .wish-list-info{
+        display: flex;
+        justify-content: center;
+        color: #6d6644;
+        span{
+            padding-top: 30px;
+            color: #FFD94D;
+        }
+    }
+    .empty-wish-list{
+        color: lightslategrey;
+        h2{
+            text-align: center;
+        }
+    }
+}
+
+

@@ -1,0 +1,26 @@
+footer{
+    background: $chacoal-background;
+    color: lightgray;
+    padding: 40px;
+
+    .footer-content{
+        display: flex;
+        justify-content: space-between;
+
+        ul{
+            display: flex;
+            justify-content: space-between;
+            list-style: none;
+            width: 30%;
+            a{
+                color: lightgray;
+                &:hover{
+                    color: white;
+                }
+            }
+        }
+        .fa-heart{
+            color: pink;
+        }
+    }
+}

@@ -1,0 +1,55 @@
+$basic-color:#a0a0a0;
+.login-title{
+    text-align: center;
+}
+.login-textbox{
+    position: relative;
+    display: block;
+    width: 500px;
+    margin-top: 50px;
+    padding: 15px;
+    border: 1px solid $basic-color;
+    border-radius: 5px;
+    font-size: 16px;
+    color: $basic-color;
+    outline: none;
+}
+
+.login-label{
+    position: absolute;
+    top: 15px;
+    left: 10px;
+    font-size: 16px;
+    color: $basic-color;
+    transition: all 0.25s ease;
+
+    &.focus{
+        top: -25px;
+        left: 5px;
+        font-size: 14px;
+        color: $basic-color;
+    }
+}
+.login-wrap{
+    position: relative;
+    width: 500px;
+    margin: 30px auto;
+}
+
+.remember-me-box{
+    margin: 30px auto;
+    width: 300px;
+    span{
+        color: slategray;
+        font-size: medium;
+    }
+}
+.login-button-section{
+    margin: 30px auto;
+    width: 200px;
+}
+
+.login-options-section{
+    margin: 10px auto;
+    width: 400px;
+}
